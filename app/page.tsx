@@ -65,58 +65,55 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-950 to-black text-white relative overflow-hidden">
-      {/* Partículas MUITO FORTES */}
+      {/* Partículas otimizadas */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Partículas brancas pequenas - MUITO MAIS */}
-        {[...Array(100)].map((_, i) => (
+        {/* Partículas brancas pequenas */}
+        {[...Array(60)].map((_, i) => (
           <div
             key={i}
-            className="absolute rounded-full"
+            className="absolute rounded-full will-change-transform"
             style={{
-              backgroundColor: `rgba(255, 255, 255, ${Math.random() * 0.8 + 0.3})`,
-              width: `${Math.random() * 6 + 2}px`,
-              height: `${Math.random() * 6 + 2}px`,
-              top: "100%",
+              backgroundColor: `rgba(255, 255, 255, ${Math.random() * 0.6 + 0.2})`,
+              width: `${Math.random() * 4 + 2}px`,
+              height: `${Math.random() * 4 + 2}px`,
+              top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
-              animation: `float-up ${Math.random() * 12 + 8}s infinite linear`,
-              animationDelay: `${Math.random() * 20}s`,
-              boxShadow: `0 0 ${Math.random() * 10 + 5}px rgba(255, 255, 255, 0.6)`,
+              animation: `float-up ${Math.random() * 15 + 10}s infinite linear`,
+              animationDelay: `${Math.random() * 10}s`,
             }}
           />
         ))}
         
-        {/* Orbs GRANDES e BRILHANTES */}
-        {[...Array(20)].map((_, i) => (
+        {/* Orbs grandes e brilhantes */}
+        {[...Array(12)].map((_, i) => (
           <div
             key={`orb-${i}`}
-            className="absolute rounded-full blur-md"
+            className="absolute rounded-full blur-md will-change-transform"
             style={{
-              backgroundColor: `rgba(255, 255, 255, ${Math.random() * 0.4 + 0.2})`,
-              width: `${Math.random() * 15 + 10}px`,
-              height: `${Math.random() * 15 + 10}px`,
+              backgroundColor: `rgba(255, 255, 255, ${Math.random() * 0.3 + 0.1})`,
+              width: `${Math.random() * 12 + 8}px`,
+              height: `${Math.random() * 12 + 8}px`,
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
-              animation: `float-diagonal ${Math.random() * 15 + 15}s infinite ease-in-out`,
+              animation: `float-diagonal ${Math.random() * 20 + 20}s infinite ease-in-out`,
               animationDelay: `${Math.random() * 8}s`,
-              boxShadow: `0 0 ${Math.random() * 30 + 20}px rgba(255, 255, 255, 0.5)`,
             }}
           />
         ))}
 
         {/* Partículas cinzas médias */}
-        {[...Array(50)].map((_, i) => (
+        {[...Array(30)].map((_, i) => (
           <div
             key={`gray-${i}`}
-            className="absolute rounded-full"
+            className="absolute rounded-full will-change-transform"
             style={{
-              backgroundColor: `rgba(200, 200, 200, ${Math.random() * 0.6 + 0.2})`,
-              width: `${Math.random() * 8 + 3}px`,
-              height: `${Math.random() * 8 + 3}px`,
+              backgroundColor: `rgba(180, 180, 180, ${Math.random() * 0.4 + 0.1})`,
+              width: `${Math.random() * 5 + 2}px`,
+              height: `${Math.random() * 5 + 2}px`,
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
-              animation: `float-up ${Math.random() * 18 + 12}s infinite linear`,
-              animationDelay: `${Math.random() * 15}s`,
-              boxShadow: `0 0 ${Math.random() * 8 + 4}px rgba(200, 200, 200, 0.4)`,
+              animation: `float-up ${Math.random() * 20 + 15}s infinite linear`,
+              animationDelay: `${Math.random() * 12}s`,
             }}
           />
         ))}
@@ -124,17 +121,16 @@ export default function HomePage() {
 
       <style jsx>{`
         @keyframes float-up {
-          0% { transform: translateY(0) translateX(0) scale(0.5); opacity: 0; }
-          10% { opacity: 1; transform: scale(1); }
-          90% { opacity: 1; }
-          100% { transform: translateY(-100vh) translateX(30px) scale(0.8); opacity: 0; }
+          0% { transform: translateY(0) translateX(0); opacity: 0.3; }
+          50% { opacity: 1; }
+          100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
         }
         
         @keyframes float-diagonal {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          25% { transform: translate(50px, -50px) scale(1.2); }
-          50% { transform: translate(100px, 0) scale(0.9); }
-          75% { transform: translate(50px, 50px) scale(1.1); }
+          0%, 100% { transform: translate(0, 0); opacity: 0.5; }
+          25% { transform: translate(30px, -30px); opacity: 0.8; }
+          50% { transform: translate(60px, 0); opacity: 0.6; }
+          75% { transform: translate(30px, 30px); opacity: 0.7; }
         }
         
         @keyframes natural-blink {
@@ -180,7 +176,7 @@ export default function HomePage() {
           <Link href="#" className="text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-200 px-4 py-2 rounded-lg">
             Discord
           </Link>
-          <Button className="bg-white hover:bg-gray-200 text-black px-6 py-2 rounded-lg transition-all duration-200 ml-4 shadow-lg font-semibold">
+          <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-all duration-200 ml-4 shadow-lg font-semibold">
             Entrar
           </Button>
         </nav>
@@ -209,7 +205,7 @@ export default function HomePage() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button
-              className="bg-white hover:bg-gray-200 text-black px-8 py-4 text-lg rounded-lg font-bold shadow-xl transform hover:scale-105 transition-all duration-200"
+              className="bg-gradient-to-br from-amber-600 to-amber-800 hover:from-amber-700 hover:to-amber-900 text-white px-8 py-4 text-lg rounded-lg font-bold shadow-xl transform hover:scale-105 transition-all duration-200"
             >
               Ir para a Dashboard →
             </Button>
@@ -256,10 +252,12 @@ export default function HomePage() {
             <span>📋</span> Termos de Serviço
           </Link>
           <Link href="#" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2">
-            <span>💬</span> Discord
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/></svg>
+            Discord
           </Link>
           <Link href="#" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2">
-            <span>▶️</span> Youtube
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            Youtube
           </Link>
         </div>
         <div className="text-gray-500 text-xs">© 2025 G-White Apps. Todos os direitos reservados</div>
