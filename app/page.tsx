@@ -568,12 +568,90 @@ export default function HomePage() {
         </div>
       </main>
 
-      {/* Footer - Movido mais para baixo */}
-      <footer className="flex items-center justify-between px-6 py-8 lg:px-12 border-t border-gray-700 relative z-10 mt-20">
+      {/* Seção Nossos Clientes */}
+      <section className="relative z-10 py-16 px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-4 text-white">Nossos Clientes</h2>
+          <p className="text-gray-300 text-lg mb-12">
+            Explore as melhores comunidades do Discord e conecte-se com milhares de pessoas que compartilham seus interesses.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Card 1 - SCUM PERDIDOS */}
+            <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 hover:border-[#8B6914] transition-all hover:scale-105">
+              <div className="flex items-center space-x-4 mb-3">
+                <div className="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center text-2xl">
+                  🎮
+                </div>
+                <div className="text-left">
+                  <h3 className="text-white font-bold text-lg">SCUM PERDIDOS</h3>
+                  <div className="flex items-center space-x-3 text-sm text-gray-400">
+                    <span className="flex items-center">
+                      <span className="w-2 h-2 bg-gray-500 rounded-full mr-1"></span>
+                      594 membros
+                    </span>
+                    <span className="flex items-center">
+                      <span className="w-2 h-2 bg-green-500 rounded-full mr-1"></span>
+                      59 online
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2 - UnderFoms #600 */}
+            <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 hover:border-[#8B6914] transition-all hover:scale-105">
+              <div className="flex items-center space-x-4 mb-3">
+                <div className="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center text-2xl">
+                  💬
+                </div>
+                <div className="text-left">
+                  <h3 className="text-white font-bold text-lg">UnderFoms #600</h3>
+                  <div className="flex items-center space-x-3 text-sm text-gray-400">
+                    <span className="flex items-center">
+                      <span className="w-2 h-2 bg-gray-500 rounded-full mr-1"></span>
+                      572 membros
+                    </span>
+                    <span className="flex items-center">
+                      <span className="w-2 h-2 bg-green-500 rounded-full mr-1"></span>
+                      57 online
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3 - SCP STORE */}
+            <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 hover:border-[#8B6914] transition-all hover:scale-105">
+              <div className="flex items-center space-x-4 mb-3">
+                <div className="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center text-2xl">
+                  🛒
+                </div>
+                <div className="text-left">
+                  <h3 className="text-white font-bold text-lg">🛒 SCP - STORE (Top 1as)</h3>
+                  <div className="flex items-center space-x-3 text-sm text-gray-400">
+                    <span className="flex items-center">
+                      <span className="w-2 h-2 bg-gray-500 rounded-full mr-1"></span>
+                      556 membros
+                    </span>
+                    <span className="flex items-center">
+                      <span className="w-2 h-2 bg-green-500 rounded-full mr-1"></span>
+                      56 online
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer - Compacto */}
+      <footer className="flex items-center justify-between px-6 py-4 lg:px-12 border-t border-gray-700 relative z-10">
         <div className="flex items-center space-x-6">
           <Link
             href="#"
-            className="transition-colors text-sm"
+            className="transition-colors text-xs"
             style={{ color: "#8B6914" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "#6B4E0A")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "#8B6914")}
@@ -582,7 +660,7 @@ export default function HomePage() {
           </Link>
           <Link
             href="#"
-            className="transition-colors text-sm"
+            className="transition-colors text-xs"
             style={{ color: "#8B6914" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "#6B4E0A")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "#8B6914")}
@@ -591,7 +669,7 @@ export default function HomePage() {
           </Link>
           <Link
             href="#"
-            className="transition-colors text-sm"
+            className="transition-colors text-xs"
             style={{ color: "#8B6914" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "#6B4E0A")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "#8B6914")}
@@ -600,7 +678,7 @@ export default function HomePage() {
           </Link>
         </div>
 
-        <div className="text-gray-400 text-sm">© 2025 G-White Apps. Todos os direitos reservados</div>
+        <div className="text-gray-400 text-xs">© 2025 G-White Apps. Todos os direitos reservados</div>
       </footer>
     </div>
   )
