@@ -187,9 +187,13 @@ export default function HomePage() {
           <Link href="#" className="text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-200 px-4 py-2 rounded-lg">
             Início
           </Link>
-          <Link href="#" className="text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-200 px-4 py-2 rounded-lg">
+          <Link
+            href="/planos"
+            className="text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-200 px-4 py-2 rounded-lg"
+          >
             Planos
           </Link>
+
           <Link href="#" className="text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-200 px-4 py-2 rounded-lg">
             Tutoriais
           </Link>
@@ -229,12 +233,15 @@ export default function HomePage() {
             >
               Ir para a Dashboard →
             </Button>
-            <Button className="bg-transparent hover:bg-white/10 text-white border-2 border-white/30 hover:border-white/50 px-8 py-4 text-lg rounded-lg font-semibold transform hover:scale-105 transition-all duration-200">
-              Ver Planos
-            </Button>
+            <Link href="/planos">
+              <Button className="bg-transparent hover:bg-white/10 text-white border-2 border-white/30 hover:border-white/50 px-8 py-4 text-lg rounded-lg font-semibold transform hover:scale-105 transition-all duration-200">
+                Ver Planos
+              </Button>
+            </Link>
           </div>
         </div>
       </main>
+
 
       {/* Seção Nossos Clientes */}
       <section className="relative z-10 py-16 overflow-hidden">
