@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 
 export default function PlansPage() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [hoveredCard, setHoveredCard] = useState(null)
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 0)
@@ -14,90 +15,121 @@ export default function PlansPage() {
 
   const plans = [
     {
-      name: "Trial",
-      badge: "Gratuito",
-      badgeColor: "bg-emerald-600",
-      price: "0",
-      period: "/24h",
-      description: "Teste todas as funcionalidades por 24 horas gratuitamente.",
+      name: "Bot Recrutamento",
+      badge: "Essencial",
+      badgeColor: "bg-blue-600",
+      price: "25,00",
+      period: "/mês",
+      description: "Sistema completo de recrutamento com formulários e gestão de metas.",
+      icon: "👥",
+      gradient: "from-blue-600 via-blue-700 to-cyan-600",
       features: [
-        "Sistema de vendas completo",
-        "Sistema de ticket profissional",
-        "OAuth2 e proteção anti-fraude",
-        "Personalização total",
-        "Logs, moderação e automação",
-        "Todas as funcionalidades incluídas"
+        "Formulário de recrutamento personalizado",
+        "Canais de metas automatizados",
+        "Sistema de definição de metas",
+        "Painel de acompanhamento",
+        "Notificações automáticas",
+        "Relatórios de performance",
+        "Suporte 24/7"
       ],
-      buttonText: "Testar Grátis",
-      buttonColor: "bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800",
+      buttonText: "Começar Agora",
+      buttonColor: "bg-blue-600 hover:bg-blue-700",
       highlighted: false
     },
     {
-      name: "Start",
-      badge: "Recomendado",
+      name: "Pacote Completo",
+      badge: "Melhor Custo-Benefício",
       badgeColor: "bg-purple-600",
-      popular: "Mais Popular",
-      popularColor: "bg-purple-700",
-      price: "5,97",
-      period: "/mês",
-      description: "Solução completa para vendas e atendimento no Discord.",
+      popular: "⭐ Economia de R$ 20",
+      price: "165,00",
+      period: " + R$ 25/mês",
+      originalPrice: "185,00",
+      description: "Todos os 16 adicionais inclusos! Pagamento inicial com desconto.",
+      icon: "🚀",
+      gradient: "from-purple-600 via-purple-700 to-pink-600",
       features: [
-        "Vendas via Pix/Cartão",
-        "Sistema de ticket profissional",
-        "Proteção anti-fraude avançada",
-        "Personalização completa",
-        "Suporte prioritário"
+        "TODAS as 16 funcionalidades extras",
+        "Sistema de Entrada/Saída personalizado",
+        "Tickets profissionais + Metas + AntiFlood",
+        "Exoneração + Rank + ADV + Ausência",
+        "Blacklist + Comandos específicos",
+        "Banimento permanente + Expulsar todos",
+        "Gestão avançada de canais e mensagens",
+        "Atualizações prioritárias"
       ],
-      buttonText: "Começar Agora",
-      buttonColor: "bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800",
-      highlighted: true
+      buttonText: "Quero Tudo Agora",
+      buttonColor: "bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700",
+      highlighted: true,
+      savings: "Desconto de R$ 20,00"
     },
     {
-      name: "Enterprise",
-      badge: "Em Desenvolvimento",
-      badgeColor: "bg-gray-600",
-      price: "Em breve",
-      period: "",
-      description: "Recursos avançados para grandes servidores e empresas.",
+      name: "Servidor GTA RP",
+      badge: "Pagamento Único",
+      badgeColor: "bg-gradient-to-r from-orange-500 to-red-600",
+      price: "30,00",
+      period: " única vez",
+      description: "Servidor Discord completo configurado para sua facção de GTA RP.",
+      icon: "🏙️",
+      gradient: "from-orange-600 via-red-600 to-red-700",
       features: [
-        "Todos os recursos do Start",
-        "Múltiplos bots por servidor",
-        "API personalizada",
-        "White-label completo"
+        "Servidor completo pré-configurado",
+        "Design profissional para GTA RP",
+        "Cargos e hierarquia prontos",
+        "Permissões configuradas",
+        "Canais organizados por setores",
+        "Posse transferida para você",
+        "Pronto para usar em minutos"
       ],
-      buttonText: "Em Breve",
-      buttonColor: "bg-gray-700 hover:bg-gray-600 cursor-not-allowed",
+      buttonText: "Solicitar Servidor",
+      buttonColor: "bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700",
       highlighted: false,
-      disabled: true
+      note: "Abra um ticket no Discord para solicitar"
     }
   ]
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-950 to-black text-white relative overflow-hidden">
-      {/* Partículas de fundo */}
+      {/* Partículas de fundo animadas */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(60)].map((_, i) => (
+        {[...Array(80)].map((_, i) => (
           <div
             key={i}
             className="absolute rounded-full will-change-transform"
             style={{
-              backgroundColor: `rgba(255, 255, 255, ${Math.random() * 0.6 + 0.2})`,
-              width: `${Math.random() * 4 + 2}px`,
-              height: `${Math.random() * 4 + 2}px`,
+              backgroundColor: `rgba(${Math.random() > 0.5 ? '168, 85, 247' : '59, 130, 246'}, ${Math.random() * 0.4 + 0.1})`,
+              width: `${Math.random() * 6 + 2}px`,
+              height: `${Math.random() * 6 + 2}px`,
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
-              animation: `float-up ${Math.random() * 15 + 10}s infinite linear`,
-              animationDelay: `${Math.random() * 8}s`,
+              animation: `float-particle ${Math.random() * 20 + 15}s infinite linear`,
+              animationDelay: `${Math.random() * 10}s`,
+              filter: 'blur(1px)',
             }}
           />
         ))}
       </div>
 
+      {/* Efeitos de luz de fundo */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+
       <style jsx>{`
-        @keyframes float-up {
-          0% { transform: translateY(0) translateX(0); opacity: 0.3; }
-          50% { opacity: 1; }
-          100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
+        @keyframes float-particle {
+          0% { 
+            transform: translateY(0) translateX(0) rotate(0deg); 
+            opacity: 0;
+          }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { 
+            transform: translateY(-120vh) translateX(${Math.random() > 0.5 ? '' : '-'}${Math.random() * 100 + 50}px) rotate(360deg); 
+            opacity: 0;
+          }
+        }
+        
+        @keyframes glow-pulse {
+          0%, 100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.3); }
+          50% { box-shadow: 0 0 40px rgba(168, 85, 247, 0.6), 0 0 60px rgba(168, 85, 247, 0.4); }
         }
       `}</style>
 
@@ -113,8 +145,8 @@ export default function PlansPage() {
           <a href="/planos" className="text-white bg-white/10 transition-all duration-200 px-4 py-2 rounded-lg">
             Planos
           </a>
-          <a href="#" className="text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-200 px-4 py-2 rounded-lg">
-            Tutoriais
+          <a href="/adicionais" className="text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-200 px-4 py-2 rounded-lg">
+            Funcionalidades Extra
           </a>
           <a href="#" className="text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-200 px-4 py-2 rounded-lg">
             Discord
@@ -125,107 +157,208 @@ export default function PlansPage() {
         </nav>
       </header>
 
-      {/* Main Content - com padding-top para compensar header fixo */}
+      {/* Main Content */}
       <main className="relative z-10 px-6 py-20 pt-32 pb-32">
         <div className="max-w-7xl mx-auto">
-          {/* Título */}
-          <div className="text-center mb-16">
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6">
-              Escolha o plano ideal <span className="text-red-500">para você</span>
+          {/* Título com animação */}
+          <div className="text-center mb-20">
+            <div className="inline-block mb-4 px-6 py-2 bg-purple-600/20 border border-purple-500/50 rounded-full text-purple-400 text-sm font-semibold animate-pulse">
+              ✨ Planos Flexíveis e Acessíveis
+            </div>
+            <h1 className="text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
+              Escolha seu plano ideal
             </h1>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Soluções flexíveis para negócios em crescimento e empresas em expansão.
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              Do bot essencial ao pacote completo com tudo incluído.<br/>
+              <span className="text-purple-400 font-semibold">Ou personalize: adicione funcionalidades extras por apenas R$ 10 cada!</span>
             </p>
           </div>
 
-          {/* Cards de Planos */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {/* Cards de Planos - ANIMADOS */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
             {plans.map((plan, index) => (
               <div
                 key={index}
-                className={`relative rounded-2xl p-8 transition-all duration-300 ${
+                onMouseEnter={() => setHoveredCard(index)}
+                onMouseLeave={() => setHoveredCard(null)}
+                className={`relative rounded-3xl p-8 transition-all duration-500 transform ${
                   plan.highlighted
-                    ? "bg-gradient-to-br from-purple-900/40 via-purple-800/30 to-purple-900/40 border-2 border-purple-500 scale-105 shadow-2xl shadow-purple-500/20"
-                    : "bg-gray-900/50 border border-gray-800 hover:border-gray-700"
+                    ? "scale-105 lg:scale-110 z-20"
+                    : hoveredCard === index ? "scale-105" : "scale-100"
+                } ${
+                  plan.highlighted
+                    ? `bg-gradient-to-br ${plan.gradient} border-2 border-purple-400 shadow-2xl`
+                    : "bg-gray-900/60 backdrop-blur-sm border border-gray-700 hover:border-gray-600"
                 }`}
+                style={{
+                  animation: plan.highlighted ? 'glow-pulse 3s infinite' : 'none',
+                  boxShadow: hoveredCard === index && !plan.highlighted 
+                    ? '0 20px 60px rgba(59, 130, 246, 0.3)' 
+                    : plan.highlighted 
+                    ? '0 25px 70px rgba(168, 85, 247, 0.4)'
+                    : 'none'
+                }}
               >
-                {/* Badge Superior */}
-                <div className="flex items-center justify-between mb-6">
-                  <span className={`${plan.badgeColor} text-white text-xs font-semibold px-3 py-1 rounded-full`}>
+                {/* Ícone Flutuante */}
+                <div className="absolute -top-8 left-1/2 transform -translate-x-1/2">
+                  <div className={`text-6xl bg-gradient-to-br ${plan.gradient} rounded-full p-4 shadow-2xl transition-transform duration-300 ${hoveredCard === index ? 'scale-125 rotate-12' : 'scale-100'}`}>
+                    {plan.icon}
+                  </div>
+                </div>
+
+                {/* Badge e Popular */}
+                <div className="flex items-center justify-between mb-6 mt-8 flex-wrap gap-2">
+                  <span className={`${plan.badgeColor} text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg`}>
                     {plan.badge}
                   </span>
                   {plan.popular && (
-                    <span className={`${plan.popularColor} text-white text-xs font-semibold px-3 py-1 rounded-full`}>
+                    <span className="bg-yellow-500 text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-bounce">
                       {plan.popular}
                     </span>
                   )}
                 </div>
 
                 {/* Nome do Plano */}
-                <h3 className="text-3xl font-bold mb-2">{plan.name}</h3>
-                <p className="text-gray-400 text-sm mb-6 min-h-[40px]">{plan.description}</p>
+                <h3 className="text-3xl font-bold mb-3">{plan.name}</h3>
+                <p className="text-gray-300 text-sm mb-6 min-h-[48px] leading-relaxed">{plan.description}</p>
 
-                {/* Preço */}
-                <div className="mb-8">
-                  <div className="flex items-baseline">
+                {/* Preço com animação */}
+                <div className="mb-8 relative">
+                  {plan.originalPrice && (
+                    <div className="text-center mb-2">
+                      <span className="text-gray-400 line-through text-lg">De R$ {plan.originalPrice}</span>
+                    </div>
+                  )}
+                  <div className="flex items-baseline justify-center flex-wrap gap-1">
                     <span className="text-sm text-gray-400 mr-1">R$</span>
-                    <span className="text-5xl font-bold">{plan.price}</span>
-                    <span className="text-gray-400 ml-1">{plan.period}</span>
+                    <span className={`text-5xl font-bold transition-all duration-300 ${hoveredCard === index ? 'scale-110' : 'scale-100'}`}>
+                      {plan.price.split(',')[0]}
+                    </span>
+                    <span className="text-2xl font-bold">,{plan.price.split(',')[1]}</span>
+                    <span className="text-gray-400 ml-1 text-base">{plan.period}</span>
                   </div>
-                  {plan.price !== "Em breve" && (
-                    <p className="text-xs text-gray-500 mt-2">a partir de</p>
+                  {plan.savings && (
+                    <div className="mt-3 text-center">
+                      <span className="bg-green-500/20 text-green-400 text-xs font-semibold px-3 py-1 rounded-full border border-green-500/50">
+                        💰 {plan.savings}
+                      </span>
+                    </div>
                   )}
                 </div>
 
-                {/* Features */}
-                <ul className="space-y-4 mb-8">
+                {/* Features com ícones animados */}
+                <ul className="space-y-3 mb-8">
                   {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start">
-                      <svg className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-gray-300 text-sm">{feature}</span>
+                    <li key={idx} className="flex items-start group">
+                      <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${plan.gradient} flex items-center justify-center mr-3 mt-0.5 flex-shrink-0 transition-transform duration-300 ${hoveredCard === index ? 'scale-110' : 'scale-100'}`}>
+                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <span className="text-gray-300 text-sm group-hover:text-white transition-colors">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
-                {/* Botão */}
+                {/* Nota adicional */}
+                {plan.note && (
+                  <div className="mb-4 p-3 bg-black/30 rounded-lg border border-orange-500/30">
+                    <p className="text-xs text-orange-300 text-center">💬 {plan.note}</p>
+                  </div>
+                )}
+
+                {/* Botão com animação */}
                 <Button
-                  disabled={plan.disabled}
-                  className={`w-full ${plan.buttonColor} text-white py-6 rounded-xl font-semibold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg`}
+                  className={`w-full ${plan.buttonColor} text-white py-6 rounded-xl font-bold text-lg transition-all duration-300 transform shadow-2xl ${
+                    hoveredCard === index ? 'scale-105 shadow-3xl' : 'scale-100'
+                  }`}
                 >
-                  {plan.buttonText} →
+                  {plan.buttonText} 
+                  <span className={`ml-2 inline-block transition-transform duration-300 ${hoveredCard === index ? 'translate-x-2' : 'translate-x-0'}`}>
+                    →
+                  </span>
                 </Button>
               </div>
             ))}
           </div>
 
+          {/* CTA para Adicionais */}
+          <div className="relative max-w-5xl mx-auto mb-16">
+            <div className="bg-gradient-to-r from-cyan-900/40 via-blue-900/40 to-purple-900/40 border-2 border-cyan-500/50 rounded-3xl p-10 text-center backdrop-blur-sm shadow-2xl">
+              <div className="text-5xl mb-4">🛠️</div>
+              <h2 className="text-3xl font-bold mb-4">
+                Quer personalizar seu bot?
+              </h2>
+              <p className="text-gray-300 text-lg mb-6 max-w-2xl mx-auto">
+                Monte seu plano ideal! Adicione apenas as funcionalidades que você precisa por <span className="text-cyan-400 font-bold">R$ 10,00 cada</span>.<br/>
+                <span className="text-sm text-gray-400">Sistema de tickets, metas, antiflood, rank, blacklist e muito mais.</span>
+              </p>
+              <a href="/adicionais">
+                <Button className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white px-8 py-6 rounded-xl font-bold text-lg shadow-2xl transform hover:scale-105 transition-all duration-300">
+                  Ver Todas as Funcionalidades →
+                </Button>
+              </a>
+            </div>
+          </div>
+
+          {/* Comparativo Rápido */}
+          <div className="max-w-4xl mx-auto mb-16">
+            <h2 className="text-3xl font-bold text-center mb-8">Compare os planos</h2>
+            <div className="bg-gray-900/60 border border-gray-800 rounded-2xl p-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div>
+                  <div className="text-3xl mb-2">👥</div>
+                  <div className="font-bold text-lg mb-2">Bot Recrutamento</div>
+                  <div className="text-sm text-gray-400">Ideal para começar com o essencial</div>
+                  <div className="mt-3 text-blue-400 font-bold">R$ 25/mês</div>
+                </div>
+                <div className="border-l border-r border-gray-700 px-6">
+                  <div className="text-3xl mb-2">🚀</div>
+                  <div className="font-bold text-lg mb-2">Pacote Completo</div>
+                  <div className="text-sm text-gray-400">Todas as funcionalidades com desconto</div>
+                  <div className="mt-3 text-purple-400 font-bold">R$ 165 + R$ 25/mês</div>
+                </div>
+                <div>
+                  <div className="text-3xl mb-2">🏙️</div>
+                  <div className="font-bold text-lg mb-2">Servidor GTA RP</div>
+                  <div className="text-sm text-gray-400">Servidor pronto para sua facção</div>
+                  <div className="mt-3 text-orange-400 font-bold">R$ 30 único</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Features Adicionais */}
-          <div className="mt-20 text-center">
-            <div className="flex flex-wrap justify-center items-center gap-8 max-w-4xl mx-auto">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-purple-600/20 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="mt-20">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              <div className="flex flex-col items-center gap-3 p-6 bg-gray-900/50 rounded-2xl border border-gray-800 hover:border-purple-500/50 transition-all duration-300 hover:scale-105">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-800 rounded-full flex items-center justify-center shadow-lg">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                   </svg>
                 </div>
-                <span className="text-gray-300">Pagamento seguro</span>
+                <span className="text-white font-semibold">Pagamento Seguro</span>
+                <span className="text-gray-400 text-sm text-center">Proteção total em todas as transações</span>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-purple-600/20 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              
+              <div className="flex flex-col items-center gap-3 p-6 bg-gray-900/50 rounded-2xl border border-gray-800 hover:border-blue-500/50 transition-all duration-300 hover:scale-105">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center shadow-lg">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <span className="text-gray-300">Ativação instantânea</span>
+                <span className="text-white font-semibold">Ativação Instantânea</span>
+                <span className="text-gray-400 text-sm text-center">Configure e use imediatamente</span>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-purple-600/20 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              
+              <div className="flex flex-col items-center gap-3 p-6 bg-gray-900/50 rounded-2xl border border-gray-800 hover:border-green-500/50 transition-all duration-300 hover:scale-105">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center shadow-lg">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
                   </svg>
                 </div>
-                <span className="text-gray-300">Suporte 24/7</span>
+                <span className="text-white font-semibold">Suporte 24/7</span>
+                <span className="text-gray-400 text-sm text-center">Assistência quando você precisar</span>
               </div>
             </div>
           </div>
