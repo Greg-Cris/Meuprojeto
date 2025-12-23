@@ -458,16 +458,7 @@ export default function HomePage() {
             opacity: 1;
           }
         }
-      `}</style>
 
-      <div
-        className="absolute inset-0 bg-gradient-to-r from-[#8B6914]/10 via-transparent to-[#8B6914]/10"
-        style={{
-          animation: "gradient-shift 12s ease-in-out infinite",
-        }}
-      ></div>
-
-      <style jsx>{`
         @keyframes gradient-shift {
           0%, 100% {
             transform: translateX(-10px);
@@ -478,7 +469,32 @@ export default function HomePage() {
             opacity: 0.1;
           }
         }
+
+        @keyframes scroll {
+          0% { 
+            transform: translateX(0); 
+          }
+          100% { 
+            transform: translateX(-100%); 
+          }
+        }
+        
+        .carousel-container:hover .carousel-track {
+          animation-play-state: paused;
+        }
+        
+        .carousel-track {
+          animation: scroll 30s linear infinite;
+          display: flex;
+        }
       `}</style>
+
+      <div
+        className="absolute inset-0 bg-gradient-to-r from-[#8B6914]/10 via-transparent to-[#8B6914]/10"
+        style={{
+          animation: "gradient-shift 12s ease-in-out infinite",
+        }}
+      ></div>
 
       {/* Header - Agora com sombra suave ao invés de mudar de cor */}
       <header
@@ -568,7 +584,7 @@ export default function HomePage() {
         </div>
       </main>
 
-{/* Seção Nossos Clientes - Carrossel */}
+      {/* Seção Nossos Clientes - Carrossel */}
       <section className="relative z-10 py-16 overflow-hidden">
         <div className="text-center mb-12 px-6">
           <h2 className="text-4xl font-bold mb-4 text-white">Nossos Clientes</h2>
@@ -577,108 +593,181 @@ export default function HomePage() {
           </p>
         </div>
 
-        <style jsx>{`
-          @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .carousel-container:hover .carousel-track {
-            animation-play-state: paused;
-          }
-          .carousel-track {
-            animation: scroll 40s linear infinite;
-          }
-        `}</style>
-
-        <div className="carousel-container relative">
-          <div className="carousel-track flex space-x-6 pl-6">
-            {[...Array(2)].map((_, dupIndex) => (
-              <div key={dupIndex} className="flex space-x-6">
-                {/* Card 1 - Atentah Studio */}
-                <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-[#8B6914] to-[#6B4E0A] rounded-2xl flex items-center justify-center text-3xl shadow-lg">🎨</div>
-                    <div className="flex-1 text-left">
-                      <h3 className="text-white font-bold text-xl mb-2">Atentah Studio</h3>
-                      <div className="flex items-center space-x-4 text-sm">
-                        <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>205 membros</span>
-                        <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>20 online</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 2 - AeroTools */}
-                <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-2xl flex items-center justify-center text-3xl shadow-lg">💎</div>
-                    <div className="flex-1 text-left">
-                      <h3 className="text-white font-bold text-xl mb-2">💎 AeroTools Premium 💎</h3>
-                      <div className="flex items-center space-x-4 text-sm">
-                        <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>203 membros</span>
-                        <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>20 online</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 3 - BLACKOUT SHOP */}
-                <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-black rounded-2xl flex items-center justify-center text-3xl shadow-lg">🛍️</div>
-                    <div className="flex-1 text-left">
-                      <h3 className="text-white font-bold text-xl mb-2">BLACKOUT SHOP</h3>
-                      <div className="flex items-center space-x-4 text-sm">
-                        <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>187 membros</span>
-                        <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>18 online</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 4 - Legends Store */}
-                <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-red-700 to-red-900 rounded-2xl flex items-center justify-center text-3xl shadow-lg">🏪</div>
-                    <div className="flex-1 text-left">
-                      <h3 className="text-white font-bold text-xl mb-2">Legends Store | #8K</h3>
-                      <div className="flex items-center space-x-4 text-sm">
-                        <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>7.6K membros</span>
-                        <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>764 online</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 5 - VitinStore */}
-                <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-purple-700 to-indigo-800 rounded-2xl flex items-center justify-center text-3xl shadow-lg">🎮</div>
-                    <div className="flex-1 text-left">
-                      <h3 className="text-white font-bold text-xl mb-2">VitinStore</h3>
-                      <div className="flex items-center space-x-4 text-sm">
-                        <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>7.3K membros</span>
-                        <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>725 online</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 6 - Suivex Community */}
-                <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-pink-600 to-purple-700 rounded-2xl flex items-center justify-center text-3xl shadow-lg">🦋</div>
-                    <div className="flex-1 text-left">
-                      <h3 className="text-white font-bold text-xl mb-2">Suivex Community #5100</h3>
-                      <div className="flex items-center space-x-4 text-sm">
-                        <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>5.0K membros</span>
-                        <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>502 online</span>
-                      </div>
+        <div className="carousel-container relative w-full">
+          <div className="carousel-track">
+            {/* Primeira cópia dos cards */}
+            <div className="flex space-x-6 pr-6">
+              {/* Card 1 - Atentah Studio */}
+              <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
+                <div className="flex items-center space-x-4">
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#8B6914] to-[#6B4E0A] rounded-2xl flex items-center justify-center text-3xl shadow-lg">🎨</div>
+                  <div className="flex-1 text-left">
+                    <h3 className="text-white font-bold text-xl mb-2">Atentah Studio</h3>
+                    <div className="flex items-center space-x-4 text-sm">
+                      <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>205 membros</span>
+                      <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>20 online</span>
                     </div>
                   </div>
                 </div>
               </div>
-            ))}
+
+              {/* Card 2 - AeroTools */}
+              <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
+                <div className="flex items-center space-x-4">
+                  <div className="w-20 h-20 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-2xl flex items-center justify-center text-3xl shadow-lg">💎</div>
+                  <div className="flex-1 text-left">
+                    <h3 className="text-white font-bold text-xl mb-2">💎 AeroTools Premium 💎</h3>
+                    <div className="flex items-center space-x-4 text-sm">
+                      <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>203 membros</span>
+                      <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>20 online</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 3 - BLACKOUT SHOP */}
+              <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
+                <div className="flex items-center space-x-4">
+                  <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-black rounded-2xl flex items-center justify-center text-3xl shadow-lg">🛍️</div>
+                  <div className="flex-1 text-left">
+                    <h3 className="text-white font-bold text-xl mb-2">BLACKOUT SHOP</h3>
+                    <div className="flex items-center space-x-4 text-sm">
+                      <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>187 membros</span>
+                      <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>18 online</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 4 - Legends Store */}
+              <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
+                <div className="flex items-center space-x-4">
+                  <div className="w-20 h-20 bg-gradient-to-br from-red-700 to-red-900 rounded-2xl flex items-center justify-center text-3xl shadow-lg">🏪</div>
+                  <div className="flex-1 text-left">
+                    <h3 className="text-white font-bold text-xl mb-2">Legends Store | #8K</h3>
+                    <div className="flex items-center space-x-4 text-sm">
+                      <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>7.6K membros</span>
+                      <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>764 online</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 5 - VitinStore */}
+              <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
+                <div className="flex items-center space-x-4">
+                  <div className="w-20 h-20 bg-gradient-to-br from-purple-700 to-indigo-800 rounded-2xl flex items-center justify-center text-3xl shadow-lg">🎮</div>
+                  <div className="flex-1 text-left">
+                    <h3 className="text-white font-bold text-xl mb-2">VitinStore</h3>
+                    <div className="flex items-center space-x-4 text-sm">
+                      <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>7.3K membros</span>
+                      <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>725 online</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 6 - Suivex Community */}
+              <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
+                <div className="flex items-center space-x-4">
+                  <div className="w-20 h-20 bg-gradient-to-br from-pink-600 to-purple-700 rounded-2xl flex items-center justify-center text-3xl shadow-lg">🦋</div>
+                  <div className="flex-1 text-left">
+                    <h3 className="text-white font-bold text-xl mb-2">Suivex Community #5100</h3>
+                    <div className="flex items-center space-x-4 text-sm">
+                      <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>5.0K membros</span>
+                      <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>502 online</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Segunda cópia dos cards para loop contínuo */}
+            <div className="flex space-x-6 pr-6">
+              {/* Card 1 - Atentah Studio */}
+              <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
+                <div className="flex items-center space-x-4">
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#8B6914] to-[#6B4E0A] rounded-2xl flex items-center justify-center text-3xl shadow-lg">🎨</div>
+                  <div className="flex-1 text-left">
+                    <h3 className="text-white font-bold text-xl mb-2">Atentah Studio</h3>
+                    <div className="flex items-center space-x-4 text-sm">
+                      <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>205 membros</span>
+                      <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>20 online</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 2 - AeroTools */}
+              <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
+                <div className="flex items-center space-x-4">
+                  <div className="w-20 h-20 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-2xl flex items-center justify-center text-3xl shadow-lg">💎</div>
+                  <div className="flex-1 text-left">
+                    <h3 className="text-white font-bold text-xl mb-2">💎 AeroTools Premium 💎</h3>
+                    <div className="flex items-center space-x-4 text-sm">
+                      <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>203 membros</span>
+                      <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>20 online</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 3 - BLACKOUT SHOP */}
+              <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
+                <div className="flex items-center space-x-4">
+                  <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-black rounded-2xl flex items-center justify-center text-3xl shadow-lg">🛍️</div>
+                  <div className="flex-1 text-left">
+                    <h3 className="text-white font-bold text-xl mb-2">BLACKOUT SHOP</h3>
+                    <div className="flex items-center space-x-4 text-sm">
+                      <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>187 membros</span>
+                      <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>18 online</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 4 - Legends Store */}
+              <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
+                <div className="flex items-center space-x-4">
+                  <div className="w-20 h-20 bg-gradient-to-br from-red-700 to-red-900 rounded-2xl flex items-center justify-center text-3xl shadow-lg">🏪</div>
+                  <div className="flex-1 text-left">
+                    <h3 className="text-white font-bold text-xl mb-2">Legends Store | #8K</h3>
+                    <div className="flex items-center space-x-4 text-sm">
+                      <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>7.6K membros</span>
+                      <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>764 online</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 5 - VitinStore */}
+              <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
+                <div className="flex items-center space-x-4">
+                  <div className="w-20 h-20 bg-gradient-to-br from-purple-700 to-indigo-800 rounded-2xl flex items-center justify-center text-3xl shadow-lg">🎮</div>
+                  <div className="flex-1 text-left">
+                    <h3 className="text-white font-bold text-xl mb-2">VitinStore</h3>
+                    <div className="flex items-center space-x-4 text-sm">
+                      <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>7.3K membros</span>
+                      <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>725 online</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 6 - Suivex Community */}
+              <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
+                <div className="flex items-center space-x-4">
+                  <div className="w-20 h-20 bg-gradient-to-br from-pink-600 to-purple-700 rounded-2xl flex items-center justify-center text-3xl shadow-lg">🦋</div>
+                  <div className="flex-1 text-left">
+                    <h3 className="text-white font-bold text-xl mb-2">Suivex Community #5100</h3>
+                    <div className="flex items-center space-x-4 text-sm">
+                      <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>5.0K membros</span>
+                      <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>502 online</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
