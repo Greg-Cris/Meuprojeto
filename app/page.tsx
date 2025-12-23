@@ -23,23 +23,39 @@ export default function HomePage() {
   }, [])
 
   const ServerCard = ({ server }) => (
-    <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
-      <div className="flex items-center space-x-4">
-        <div className={`w-20 h-20 bg-gradient-to-br ${server.iconBg} rounded-2xl flex items-center justify-center text-3xl shadow-lg`}>
+    <div className="flex-shrink-0 w-72 h-24 bg-[#2b2d31] rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group relative">
+      {/* Background gradiente sutil */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-700/30 to-gray-800/30" />
+      
+      {/* Conteúdo */}
+      <div className="relative h-full px-4 py-3 flex items-center space-x-3">
+        {/* Ícone do servidor */}
+        <div className="w-12 h-12 bg-[#313338] rounded-full flex items-center justify-center text-2xl flex-shrink-0 shadow-md">
           {server.icon}
         </div>
-        <div className="flex-1 text-left">
-          <h3 className="text-white font-bold text-xl mb-2">{server.name}</h3>
-          <div className="flex items-center space-x-4 text-sm">
-            <span className="flex items-center text-gray-400">
-              <span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>
-              {server.members} membros
-            </span>
-            <span className="flex items-center text-green-400">
-              <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-              {server.online} online
-            </span>
+        
+        {/* Informações */}
+        <div className="flex-1 min-w-0">
+          <h3 className="text-white font-semibold text-sm truncate mb-1 group-hover:text-[#8B6914] transition-colors">
+            {server.name}
+          </h3>
+          <div className="flex items-center space-x-3 text-xs">
+            <div className="flex items-center space-x-1">
+              <span className="w-2 h-2 bg-gray-500 rounded-full" />
+              <span className="text-gray-400">{server.members} membros</span>
+            </div>
+            <div className="flex items-center space-x-1">
+              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <span className="text-green-400">{server.online} online</span>
+            </div>
           </div>
+        </div>
+        
+        {/* Ícone Discord */}
+        <div className="text-gray-600 group-hover:text-gray-500 transition-colors">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+          </svg>
         </div>
       </div>
     </div>
