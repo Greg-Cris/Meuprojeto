@@ -106,11 +106,15 @@ export default function HomePage() {
         
         @keyframes scroll {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-100%); }
+          100% { transform: translateX(calc(-268px * 6)); }
         }
         
         .carousel-container:hover .carousel-track { animation-play-state: paused; }
-        .carousel-track { animation: scroll 30s linear infinite; display: flex; }
+        .carousel-track { 
+          animation: scroll 40s linear infinite; 
+          display: flex;
+          width: fit-content;
+        }
       `}</style>
 
       <div className="absolute inset-0 bg-gradient-to-r from-[#8B6914]/10 via-transparent to-[#8B6914]/10 pointer-events-none" />
@@ -177,20 +181,26 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="carousel-container relative max-w-7xl mx-auto px-6">
-          <div className="carousel-track">
+        <div className="carousel-container relative w-full overflow-hidden">
+          <div className="carousel-track flex">
             {/* Primeira cópia */}
-            <div className="flex space-x-4 pr-4">
-              {servers.map((server) => (
-                <ServerCard key={`first-${server.id}`} server={server} />
-              ))}
-            </div>
-            {/* Segunda cópia para loop */}
-            <div className="flex space-x-4 pr-4">
-              {servers.map((server) => (
-                <ServerCard key={`second-${server.id}`} server={server} />
-              ))}
-            </div>
+            {servers.map((server) => (
+              <div key={`first-${server.id}`} className="px-2">
+                <ServerCard server={server} />
+              </div>
+            ))}
+            {/* Segunda cópia para loop infinito */}
+            {servers.map((server) => (
+              <div key={`second-${server.id}`} className="px-2">
+                <ServerCard server={server} />
+              </div>
+            ))}
+            {/* Terceira cópia para garantir loop suave */}
+            {servers.map((server) => (
+              <div key={`third-${server.id}`} className="px-2">
+                <ServerCard server={server} />
+              </div>
+            ))}
           </div>
         </div>
       </section>
