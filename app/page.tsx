@@ -568,7 +568,7 @@ export default function HomePage() {
         </div>
       </main>
 
-      {/* Seção Nossos Clientes - Carrossel */}
+{/* Seção Nossos Clientes - Carrossel */}
       <section className="relative z-10 py-16 overflow-hidden">
         <div className="text-center mb-12 px-6">
           <h2 className="text-4xl font-bold mb-4 text-white">Nossos Clientes</h2>
@@ -579,78 +579,45 @@ export default function HomePage() {
 
         <style jsx>{`
           @keyframes scroll {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
           }
-
           .carousel-container:hover .carousel-track {
             animation-play-state: paused;
           }
-
           .carousel-track {
-            animation: scroll 30s linear infinite;
+            animation: scroll 40s linear infinite;
           }
         `}</style>
 
         <div className="carousel-container relative">
-          <div className="carousel-track flex space-x-6">
-            {/* Duplicando os cards para efeito infinito */}
-            {[...Array(2)].map((_, index) => (
-              <div key={index} className="flex space-x-6">
+          <div className="carousel-track flex space-x-6 pl-6">
+            {[...Array(2)].map((_, dupIndex) => (
+              <div key={dupIndex} className="flex space-x-6">
                 {/* Card 1 - Atentah Studio */}
                 <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
                   <div className="flex items-center space-x-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-[#8B6914] to-[#6B4E0A] rounded-2xl flex items-center justify-center text-3xl shadow-lg">
-                      🎨
-                    </div>
+                    <div className="w-20 h-20 bg-gradient-to-br from-[#8B6914] to-[#6B4E0A] rounded-2xl flex items-center justify-center text-3xl shadow-lg">🎨</div>
                     <div className="flex-1 text-left">
                       <h3 className="text-white font-bold text-xl mb-2">Atentah Studio</h3>
                       <div className="flex items-center space-x-4 text-sm">
-                        <span className="flex items-center text-gray-400">
-                          <span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>
-                          205 membros
-                        </span>
-                        <span className="flex items-center text-green-400">
-                          <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-                          20 online
-                        </span>
+                        <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>205 membros</span>
+                        <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>20 online</span>
                       </div>
-                    </div>
-                    <div className="text-gray-600 text-2xl">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
-                      </svg>
                     </div>
                   </div>
                 </div>
 
-                {/* Card 2 - AeroTools Premium */}
+                {/* Card 2 - AeroTools */}
                 <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
                   <div className="flex items-center space-x-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-2xl flex items-center justify-center text-3xl shadow-lg">
-                      💎
-                    </div>
+                    <div className="w-20 h-20 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-2xl flex items-center justify-center text-3xl shadow-lg">💎</div>
                     <div className="flex-1 text-left">
                       <h3 className="text-white font-bold text-xl mb-2">💎 AeroTools Premium 💎</h3>
                       <div className="flex items-center space-x-4 text-sm">
-                        <span className="flex items-center text-gray-400">
-                          <span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>
-                          203 membros
-                        </span>
-                        <span className="flex items-center text-green-400">
-                          <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-                          20 online
-                        </span>
+                        <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>203 membros</span>
+                        <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>20 online</span>
                       </div>
-                    </div>
-                    <div className="text-gray-600 text-2xl">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
-                      </svg>
                     </div>
                   </div>
                 </div>
@@ -658,26 +625,13 @@ export default function HomePage() {
                 {/* Card 3 - BLACKOUT SHOP */}
                 <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
                   <div className="flex items-center space-x-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-black rounded-2xl flex items-center justify-center text-3xl shadow-lg">
-                      🛍️
-                    </div>
+                    <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-black rounded-2xl flex items-center justify-center text-3xl shadow-lg">🛍️</div>
                     <div className="flex-1 text-left">
                       <h3 className="text-white font-bold text-xl mb-2">BLACKOUT SHOP</h3>
                       <div className="flex items-center space-x-4 text-sm">
-                        <span className="flex items-center text-gray-400">
-                          <span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>
-                          187 membros
-                        </span>
-                        <span className="flex items-center text-green-400">
-                          <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-                          18 online
-                        </span>
+                        <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>187 membros</span>
+                        <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>18 online</span>
                       </div>
-                    </div>
-                    <div className="text-gray-600 text-2xl">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
-                      </svg>
                     </div>
                   </div>
                 </div>
@@ -685,26 +639,13 @@ export default function HomePage() {
                 {/* Card 4 - Legends Store */}
                 <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
                   <div className="flex items-center space-x-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-red-700 to-red-900 rounded-2xl flex items-center justify-center text-3xl shadow-lg">
-                      🏪
-                    </div>
+                    <div className="w-20 h-20 bg-gradient-to-br from-red-700 to-red-900 rounded-2xl flex items-center justify-center text-3xl shadow-lg">🏪</div>
                     <div className="flex-1 text-left">
                       <h3 className="text-white font-bold text-xl mb-2">Legends Store | #8K</h3>
                       <div className="flex items-center space-x-4 text-sm">
-                        <span className="flex items-center text-gray-400">
-                          <span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>
-                          7.6K membros
-                        </span>
-                        <span className="flex items-center text-green-400">
-                          <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-                          764 online
-                        </span>
+                        <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>7.6K membros</span>
+                        <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>764 online</span>
                       </div>
-                    </div>
-                    <div className="text-gray-600 text-2xl">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
-                      </svg>
                     </div>
                   </div>
                 </div>
@@ -712,26 +653,13 @@ export default function HomePage() {
                 {/* Card 5 - VitinStore */}
                 <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
                   <div className="flex items-center space-x-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-purple-700 to-indigo-800 rounded-2xl flex items-center justify-center text-3xl shadow-lg">
-                      🎮
-                    </div>
+                    <div className="w-20 h-20 bg-gradient-to-br from-purple-700 to-indigo-800 rounded-2xl flex items-center justify-center text-3xl shadow-lg">🎮</div>
                     <div className="flex-1 text-left">
                       <h3 className="text-white font-bold text-xl mb-2">VitinStore</h3>
                       <div className="flex items-center space-x-4 text-sm">
-                        <span className="flex items-center text-gray-400">
-                          <span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>
-                          7.3K membros
-                        </span>
-                        <span className="flex items-center text-green-400">
-                          <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-                          725 online
-                        </span>
+                        <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>7.3K membros</span>
+                        <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>725 online</span>
                       </div>
-                    </div>
-                    <div className="text-gray-600 text-2xl">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
-                      </svg>
                     </div>
                   </div>
                 </div>
@@ -739,26 +667,13 @@ export default function HomePage() {
                 {/* Card 6 - Suivex Community */}
                 <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
                   <div className="flex items-center space-x-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-pink-600 to-purple-700 rounded-2xl flex items-center justify-center text-3xl shadow-lg">
-                      🦋
-                    </div>
+                    <div className="w-20 h-20 bg-gradient-to-br from-pink-600 to-purple-700 rounded-2xl flex items-center justify-center text-3xl shadow-lg">🦋</div>
                     <div className="flex-1 text-left">
                       <h3 className="text-white font-bold text-xl mb-2">Suivex Community #5100</h3>
                       <div className="flex items-center space-x-4 text-sm">
-                        <span className="flex items-center text-gray-400">
-                          <span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>
-                          5.0K membros
-                        </span>
-                        <span className="flex items-center text-green-400">
-                          <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-                          502 online
-                        </span>
+                        <span className="flex items-center text-gray-400"><span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>5.0K membros</span>
+                        <span className="flex items-center text-green-400"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>502 online</span>
                       </div>
-                    </div>
-                    <div className="text-gray-600 text-2xl">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
-                      </svg>
                     </div>
                   </div>
                 </div>
