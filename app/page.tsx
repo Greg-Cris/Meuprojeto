@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 
 export default function HomePage() {
   const [isScrolled, setIsScrolled] = useState(false)
-  
+
   const servers = [
     { id: 1, name: "Atentah Studio", icon: "🎨", iconBg: "from-[#8B6914] to-[#6B4E0A]", members: "205", online: "20" },
     { id: 2, name: "💎 AeroTools Premium 💎", icon: "💎", iconBg: "from-cyan-600 to-blue-700", members: "203", online: "20" },
@@ -60,7 +60,7 @@ export default function HomePage() {
         ))}
       </div>
 
-      {/* ESTILOS */}
+      {/* CSS */}
       <style jsx>{`
         @keyframes float-up {
           0% { transform: translateY(0); opacity: 0; }
@@ -88,24 +88,25 @@ export default function HomePage() {
       <div className="absolute inset-0 bg-gradient-to-r from-[#8B6914]/10 via-transparent to-[#8B6914]/10 pointer-events-none" />
 
       {/* HEADER */}
-      <header className={`fixed top-0 inset-x-0 z-50 px-6 py-2 flex justify-between transition-all ${
-        isScrolled ? "shadow-lg" : ""
-      }`}>
-        <img src="/gwhite-logo.png" className="h-16" />
-        <nav className="hidden md:flex gap-8 items-center">
+      <header className={`fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-2 transition-all ${isScrolled ? "shadow-lg bg-black/40 backdrop-blur" : ""}`}>
+        <img src="/gwhite-logo.png" alt="G-White Apps" className="h-16" />
+        <nav className="hidden md:flex items-center space-x-8">
           <Link href="#">Início</Link>
           <Link href="#">Planos</Link>
           <Link href="#">Tutoriais</Link>
           <Link href="#">Discord</Link>
-          <Button className="bg-blue-800">Login com Discord</Button>
+          <Button className="bg-blue-800 hover:bg-blue-900">
+            Login com Discord
+          </Button>
         </nav>
       </header>
 
       {/* HERO */}
-      <main className="pt-32 text-center px-6">
+      <main className="flex flex-col items-center justify-center px-6 py-20 pt-32 text-center min-h-screen relative z-10">
         <h1 className="text-6xl font-bold mb-6">
-          <span className="relative">
-            👑 G-White Apps
+          <span className="relative inline-block">
+            <span className="absolute -top-10 left-0 -rotate-12">👑</span>
+            G-White Apps
           </span>
         </h1>
         <h2 className="text-3xl mb-8 text-[#8B6914]">
@@ -113,28 +114,32 @@ export default function HomePage() {
         </h2>
       </main>
 
-      {/* CLIENTES */}
-      <section className="py-16 relative z-10">
-        <h2 className="text-center text-4xl font-bold mb-10">Nossos Clientes</h2>
+      {/* NOSSOS CLIENTES */}
+      <section className="relative z-10 py-16">
+        <div className="text-center mb-10 px-6">
+          <h2 className="text-4xl font-bold mb-4">Nossos Clientes</h2>
+          <p className="text-gray-300 max-w-3xl mx-auto">
+            Comunidades que confiam na G-White Apps
+          </p>
+        </div>
 
         <div className="w-full overflow-hidden">
           <div
-            className="flex gap-4"
+            className="flex gap-4 whitespace-nowrap"
             style={{
-              width: "max-content",
-              animation: "scroll 30s linear infinite",
+              animation: "scroll 25s linear infinite",
             }}
           >
             {[...servers, ...servers].map((server, index) => (
               <div
                 key={index}
-                className="w-64 flex-shrink-0 bg-gray-900/90 border border-gray-700 rounded-lg p-4 hover:border-[#8B6914] transition"
+                className="inline-flex w-64 flex-shrink-0 bg-gradient-to-br from-gray-900/90 to-gray-800/70 border border-gray-700 rounded-lg p-4 hover:border-[#8B6914] transition"
               >
-                <div className="flex gap-3 items-center">
-                  <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${server.iconBg} flex items-center justify-center text-2xl`}>
+                <div className="flex items-center gap-3">
+                  <div className={`w-16 h-16 bg-gradient-to-br ${server.iconBg} rounded-xl flex items-center justify-center text-2xl`}>
                     {server.icon}
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <h3 className="font-semibold truncate">{server.name}</h3>
                     <p className="text-xs text-gray-400">{server.members} membros</p>
                     <p className="text-xs text-green-400">{server.online} online</p>
@@ -147,7 +152,7 @@ export default function HomePage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-gray-700 px-6 py-4 flex justify-between text-xs">
+      <footer className="relative z-10 mt-16 border-t border-gray-700 px-6 py-4 flex justify-between text-xs text-gray-400">
         <span>© 2025 G-White Apps</span>
         <div className="flex gap-4">
           <Link href="#">Termos</Link>
