@@ -406,7 +406,6 @@ export default function HomePage() {
           }
         }
         
-        /* Adding new animation keyframes for horizontal and diagonal movement */
         @keyframes float-horizontal {
           0%, 100% {
             transform: translateX(0) translateY(0);
@@ -437,7 +436,6 @@ export default function HomePage() {
           }
         }
 
-        /* Adding new pulse animation */
         @keyframes pulse-glow {
           0%, 100% {
             transform: scale(1);
@@ -449,7 +447,6 @@ export default function HomePage() {
           }
         }
 
-        /* Updated blink animation to be more natural with smooth fade transitions */
         @keyframes natural-blink {
           0%, 85% {
             opacity: 1;
@@ -483,12 +480,10 @@ export default function HomePage() {
         }
       `}</style>
 
-      {/* Header */}
+      {/* Header - Agora com sombra suave ao invés de mudar de cor */}
       <header
-        className={`fixed top-0 left-0 right-0 flex items-center justify-between px-6 py-2 lg:px-12 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-gradient-to-br from-black via-gray-900 to-[#8B6914] border-b border-gray-700" // Using the same background gradient as the page when scrolled
-            : "bg-transparent"
+        className={`fixed top-0 left-0 right-0 flex items-center justify-between px-6 py-2 lg:px-12 z-50 transition-all duration-300 bg-transparent ${
+          isScrolled ? "shadow-[0_4px_20px_rgba(0,0,0,0.3)]" : ""
         }`}
       >
         <div className="flex items-center">
@@ -515,7 +510,7 @@ export default function HomePage() {
       </header>
 
       {/* Main Content */}
-      <main className="flex flex-col items-center justify-center px-6 py-20 pt-32 text-center min-h-[calc(100vh-200px)] relative z-10">
+      <main className="flex flex-col items-center justify-center px-6 py-20 pt-32 text-center min-h-screen relative z-10">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-6xl lg:text-7xl font-bold mb-6 leading-tight">
             <div className="relative inline-block">
@@ -557,10 +552,9 @@ export default function HomePage() {
               className="text-white px-8 py-3 text-lg rounded-lg"
               style={{
                 backgroundColor: "#8B6914",
-                "&:hover": { backgroundColor: "#6B4E0A" },
               }}
-              onMouseEnter={(e) => (e.target.style.backgroundColor = "#6B4E0A")}
-              onMouseLeave={(e) => (e.target.style.backgroundColor = "#8B6914")}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#6B4E0A")}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#8B6914")}
             >
               Ir para a Dashboard
             </Button>
@@ -572,53 +566,17 @@ export default function HomePage() {
             </Button>
           </div>
         </div>
-
-        {/* Preview Window */}
-        <div className="fixed right-8 top-1/2 transform -translate-y-1/2 hidden xl:block">
-          <div className="bg-gray-900 rounded-lg border border-gray-700 p-4 w-80 shadow-2xl">
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 bg-red-500 rounded-full"></div>
-                <div className="w-4 h-4 bg-yellow-500 rounded-full"></div>
-                <div className="w-4 h-4 bg-green-500 rounded-full"></div>
-              </div>
-              <span className="text-xs text-gray-400">×</span>
-            </div>
-
-            <div className="bg-gray-800 rounded p-3">
-              <div className="flex items-center space-x-2 mb-2">
-                <span className="text-white font-semibold text-sm">G-White</span>
-                <span className="font-semibold text-sm" style={{ color: "#8B6914" }}>
-                  Apps
-                </span>
-              </div>
-
-              <div className="text-white text-2xl font-bold mb-2">G-White Apps</div>
-              <div className="text-lg font-semibold mb-3" style={{ color: "#8B6914" }}>
-                Seu futuro Bot está aqui.
-              </div>
-
-              <div className="flex items-center space-x-2 mb-3">
-                <div className="w-4 h-4 rounded" style={{ backgroundColor: "#8B6914" }}></div>
-                <span className="text-white text-xs">Ferramenta de Captura</span>
-                <span className="text-gray-400 text-xs ml-auto">⋯</span>
-              </div>
-
-              {/* Additional code here */}
-            </div>
-          </div>
-        </div>
       </main>
 
-      {/* Footer */}
-      <footer className="flex items-center justify-between px-6 py-6 lg:px-12 mt-auto border-t border-gray-700 relative z-10">
+      {/* Footer - Movido mais para baixo */}
+      <footer className="flex items-center justify-between px-6 py-8 lg:px-12 border-t border-gray-700 relative z-10 mt-20">
         <div className="flex items-center space-x-6">
           <Link
             href="#"
             className="transition-colors text-sm"
             style={{ color: "#8B6914" }}
-            onMouseEnter={(e) => (e.target.style.color = "#6B4E0A")}
-            onMouseLeave={(e) => (e.target.style.color = "#8B6914")}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#6B4E0A")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#8B6914")}
           >
             Termos de Serviço
           </Link>
@@ -626,8 +584,8 @@ export default function HomePage() {
             href="#"
             className="transition-colors text-sm"
             style={{ color: "#8B6914" }}
-            onMouseEnter={(e) => (e.target.style.color = "#6B4E0A")}
-            onMouseLeave={(e) => (e.target.style.color = "#8B6914")}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#6B4E0A")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#8B6914")}
           >
             Discord
           </Link>
@@ -635,8 +593,8 @@ export default function HomePage() {
             href="#"
             className="transition-colors text-sm"
             style={{ color: "#8B6914" }}
-            onMouseEnter={(e) => (e.target.style.color = "#6B4E0A")}
-            onMouseLeave={(e) => (e.target.style.color = "#8B6914")}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#6B4E0A")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#8B6914")}
           >
             Youtube
           </Link>
