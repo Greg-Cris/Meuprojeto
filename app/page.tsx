@@ -141,17 +141,25 @@ export default function HomePage() {
       <div className="absolute inset-0 bg-gradient-to-r from-[#8B6914]/10 via-transparent to-[#8B6914]/10 pointer-events-none" />
 
       {/* Header */}
-      <header className={`fixed top-0 left-0 right-0 flex items-center justify-between px-6 py-2 lg:px-12 z-50 transition-all duration-300 bg-transparent ${isScrolled ? "shadow-[0_4px_20px_rgba(0,0,0,0.3)]" : ""}`}>
+      <header className={`fixed top-0 left-0 right-0 flex items-center justify-between px-6 py-3 lg:px-12 z-50 transition-all duration-300 ${isScrolled ? "bg-black/80 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.6)]" : "bg-transparent"}`}>
         <div className="flex items-center">
           <img src="/gwhite-logo.png" alt="G-White Apps" className="h-16 w-auto" />
         </div>
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link href="#" className="text-gray-200 hover:text-white transition-colors">Início</Link>
-          <Link href="#" className="text-gray-200 hover:text-white transition-colors">Planos</Link>
-          <Link href="#" className="text-gray-200 hover:text-white transition-colors">Tutoriais</Link>
-          <Link href="#" className="text-gray-200 hover:text-white transition-colors">Discord</Link>
-          <Button className="bg-blue-800 hover:bg-blue-900 text-white px-6 py-2 rounded-lg transition-colors">
-            Login com Discord
+        <nav className="hidden md:flex items-center space-x-2">
+          <Link href="#" className="text-gray-200 hover:text-white hover:bg-white/10 transition-all duration-200 px-4 py-2 rounded-lg">
+            Início
+          </Link>
+          <Link href="#" className="text-gray-200 hover:text-white hover:bg-white/10 transition-all duration-200 px-4 py-2 rounded-lg">
+            Planos
+          </Link>
+          <Link href="#" className="text-gray-200 hover:text-white hover:bg-white/10 transition-all duration-200 px-4 py-2 rounded-lg">
+            Tutoriais
+          </Link>
+          <Link href="#" className="text-gray-200 hover:text-white hover:bg-white/10 transition-all duration-200 px-4 py-2 rounded-lg">
+            Discord
+          </Link>
+          <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-2 rounded-lg transition-all duration-200 ml-4 shadow-lg">
+            Entrar
           </Button>
         </nav>
       </header>
@@ -179,14 +187,14 @@ export default function HomePage() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button
-              className="text-white px-8 py-3 text-lg rounded-lg"
-              style={{ backgroundColor: "#8B6914" }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#6B4E0A")}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#8B6914")}
+              className="text-white px-8 py-4 text-lg rounded-lg font-semibold shadow-xl transform hover:scale-105 transition-all duration-200"
+              style={{ backgroundColor: "#DC2626" }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#B91C1C")}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#DC2626")}
             >
-              Ir para a Dashboard
+              Ir para a Dashboard →
             </Button>
-            <Button variant="outline" className="bg-gray-800 hover:bg-gray-700 text-white border-gray-600 px-8 py-3 text-lg rounded-lg">
+            <Button className="bg-transparent hover:bg-white/10 text-white border-2 border-white/20 hover:border-white/40 px-8 py-4 text-lg rounded-lg font-semibold transform hover:scale-105 transition-all duration-200">
               Ver Planos
             </Button>
           </div>
@@ -223,19 +231,19 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="flex items-center justify-between px-6 py-4 lg:px-12 border-t border-gray-700 relative z-10">
+      <footer className="flex flex-col sm:flex-row items-center justify-between px-6 py-6 lg:px-12 border-t border-gray-800 relative z-10 bg-black/40 backdrop-blur-sm gap-4">
         <div className="flex items-center space-x-6">
-          <Link href="#" className="transition-colors text-xs" style={{ color: "#8B6914" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#6B4E0A")} onMouseLeave={(e) => (e.currentTarget.style.color = "#8B6914")}>
-            Termos de Serviço
+          <Link href="#" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2">
+            <span>📋</span> Termos de Serviço
           </Link>
-          <Link href="#" className="transition-colors text-xs" style={{ color: "#8B6914" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#6B4E0A")} onMouseLeave={(e) => (e.currentTarget.style.color = "#8B6914")}>
-            Discord
+          <Link href="#" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2">
+            <span>💬</span> Discord
           </Link>
-          <Link href="#" className="transition-colors text-xs" style={{ color: "#8B6914" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#6B4E0A")} onMouseLeave={(e) => (e.currentTarget.style.color = "#8B6914")}>
-            Youtube
+          <Link href="#" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2">
+            <span>▶️</span> Youtube
           </Link>
         </div>
-        <div className="text-gray-400 text-xs">© 2025 G-White Apps. Todos os direitos reservados</div>
+        <div className="text-gray-500 text-xs">© 2025 G-White Apps. Todos os direitos reservados</div>
       </footer>
     </div>
   )
