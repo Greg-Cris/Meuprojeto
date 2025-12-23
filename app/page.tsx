@@ -196,13 +196,13 @@ export default function HomePage() {
         <div className="carousel-container relative w-full">
           <div className="carousel-track">
             {/* Primeira cópia */}
-            <div className="flex space-x-6 pr-6">
+            <div className="flex space-x-4 pr-4">
               {servers.map((server) => (
                 <ServerCard key={`first-${server.id}`} server={server} />
               ))}
             </div>
             {/* Segunda cópia para loop */}
-            <div className="flex space-x-6 pr-6">
+            <div className="flex space-x-4 pr-4">
               {servers.map((server) => (
                 <ServerCard key={`second-${server.id}`} server={server} />
               ))}
