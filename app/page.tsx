@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 
 export default function HomePage() {
   const [isScrolled, setIsScrolled] = useState(false)
-
+  
   const servers = [
     { id: 1, name: "Atentah Studio", icon: "🎨", iconBg: "from-[#8B6914] to-[#6B4E0A]", members: "205", online: "20" },
     { id: 2, name: "💎 AeroTools Premium 💎", icon: "💎", iconBg: "from-cyan-600 to-blue-700", members: "203", online: "20" },
@@ -23,59 +23,100 @@ export default function HomePage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-[#8B6914] text-white overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-[#8B6914] text-white relative overflow-hidden">
 
-      {/* ESTILOS DAS ANIMAÇÕES */}
+      {/* PARTÍCULAS */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(30)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              backgroundColor: `rgba(139,105,20,${Math.random() * 0.3 + 0.1})`,
+              width: `${Math.random() * 3 + 0.5}px`,
+              height: `${Math.random() * 3 + 0.5}px`,
+              top: "100%",
+              left: `${Math.random() * 100}%`,
+              animation: `float-up ${Math.random() * 15 + 10}s infinite linear`,
+              animationDelay: `${Math.random() * 30}s`,
+            }}
+          />
+        ))}
+
+        {[...Array(5)].map((_, i) => (
+          <div
+            key={`orb-${i}`}
+            className="absolute rounded-full blur-sm"
+            style={{
+              backgroundColor: `rgba(139,105,20,${Math.random() * 0.15 + 0.05})`,
+              width: `${Math.random() * 4 + 3}px`,
+              height: `${Math.random() * 4 + 3}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animation: `float-diagonal ${Math.random() * 20 + 20}s infinite ease-in-out`,
+              animationDelay: `${Math.random() * 10}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* ESTILOS */}
       <style jsx>{`
+        @keyframes float-up {
+          0% { transform: translateY(0); opacity: 0; }
+          10% { opacity: 1; }
+          100% { transform: translateY(-100vh); opacity: 0; }
+        }
+
+        @keyframes float-diagonal {
+          0%,100% { transform: translate(0,0); }
+          50% { transform: translate(40px,-40px); }
+        }
+
+        @keyframes natural-blink {
+          0%,85% { opacity: 1; }
+          90%,95% { opacity: .3; }
+          100% { opacity: 1; }
+        }
+
         @keyframes scroll {
-          from {
-            transform: translateX(0);
-          }
-          to {
-            transform: translateX(-50%);
-          }
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
         }
       `}</style>
 
+      <div className="absolute inset-0 bg-gradient-to-r from-[#8B6914]/10 via-transparent to-[#8B6914]/10 pointer-events-none" />
+
       {/* HEADER */}
-      <header className={`fixed top-0 left-0 right-0 z-50 px-6 py-3 flex items-center justify-between transition-all ${
-        isScrolled ? "bg-black/70 backdrop-blur shadow-lg" : "bg-transparent"
+      <header className={`fixed top-0 inset-x-0 z-50 px-6 py-2 flex justify-between transition-all ${
+        isScrolled ? "shadow-lg" : ""
       }`}>
-        <img src="/gwhite-logo.png" alt="G-White Apps" className="h-14" />
-        <nav className="hidden md:flex items-center gap-6">
+        <img src="/gwhite-logo.png" className="h-16" />
+        <nav className="hidden md:flex gap-8 items-center">
           <Link href="#">Início</Link>
           <Link href="#">Planos</Link>
           <Link href="#">Tutoriais</Link>
-          <Button className="bg-blue-800 hover:bg-blue-900">Login com Discord</Button>
+          <Link href="#">Discord</Link>
+          <Button className="bg-blue-800">Login com Discord</Button>
         </nav>
       </header>
 
       {/* HERO */}
-      <main className="pt-36 pb-24 text-center px-6">
-        <h1 className="text-6xl font-bold mb-4">G-White Apps</h1>
-        <h2 className="text-3xl font-semibold mb-6 text-[#8B6914]">
+      <main className="pt-32 text-center px-6">
+        <h1 className="text-6xl font-bold mb-6">
+          <span className="relative">
+            👑 G-White Apps
+          </span>
+        </h1>
+        <h2 className="text-3xl mb-8 text-[#8B6914]">
           Seu futuro Bot está aqui.
         </h2>
-        <p className="max-w-3xl mx-auto text-gray-300 mb-10">
-          Automatize, escale e profissionalize seu servidor Discord com tecnologia de ponta.
-        </p>
-
-        <div className="flex gap-4 justify-center">
-          <Button style={{ backgroundColor: "#8B6914" }}>
-            Ir para a Dashboard
-          </Button>
-          <Button variant="outline">Ver Planos</Button>
-        </div>
       </main>
 
-      {/* NOSSOS CLIENTES */}
-      <section className="py-16">
-        <h2 className="text-center text-4xl font-bold mb-4">Nossos Clientes</h2>
-        <p className="text-center text-gray-400 mb-10">
-          Comunidades que confiam na G-White Apps
-        </p>
+      {/* CLIENTES */}
+      <section className="py-16 relative z-10">
+        <h2 className="text-center text-4xl font-bold mb-10">Nossos Clientes</h2>
 
-        {/* CARROSSEL */}
         <div className="w-full overflow-hidden">
           <div
             className="flex gap-4"
@@ -87,10 +128,10 @@ export default function HomePage() {
             {[...servers, ...servers].map((server, index) => (
               <div
                 key={index}
-                className="w-64 flex-shrink-0 bg-gray-900 border border-gray-700 rounded-xl p-4 hover:border-[#8B6914] transition hover:scale-105"
+                className="w-64 flex-shrink-0 bg-gray-900/90 border border-gray-700 rounded-lg p-4 hover:border-[#8B6914] transition"
               >
                 <div className="flex gap-3 items-center">
-                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${server.iconBg} flex items-center justify-center text-2xl`}>
+                  <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${server.iconBg} flex items-center justify-center text-2xl`}>
                     {server.icon}
                   </div>
                   <div>
@@ -106,14 +147,15 @@ export default function HomePage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-gray-700 px-6 py-4 text-xs text-gray-400 flex justify-between">
+      <footer className="border-t border-gray-700 px-6 py-4 flex justify-between text-xs">
         <span>© 2025 G-White Apps</span>
         <div className="flex gap-4">
           <Link href="#">Termos</Link>
           <Link href="#">Discord</Link>
-          <Link href="#">YouTube</Link>
+          <Link href="#">Youtube</Link>
         </div>
       </footer>
+
     </div>
   )
 }
