@@ -1,3 +1,7 @@
+"use client"
+
+"use client"
+
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useEffect, useState } from "react"
@@ -19,29 +23,6 @@ export default function HomePage() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
-
-  const ServerCard = ({ server }) => (
-    <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
-      <div className="flex items-center space-x-4">
-        <div className={`w-20 h-20 bg-gradient-to-br ${server.iconBg} rounded-2xl flex items-center justify-center text-3xl shadow-lg`}>
-          {server.icon}
-        </div>
-        <div className="flex-1 text-left">
-          <h3 className="text-white font-bold text-xl mb-2">{server.name}</h3>
-          <div className="flex items-center space-x-4 text-sm">
-            <span className="flex items-center text-gray-400">
-              <span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>
-              {server.members} membros
-            </span>
-            <span className="flex items-center text-green-400">
-              <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-              {server.online} online
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-[#8B6914] text-white relative overflow-hidden">
@@ -104,11 +85,8 @@ export default function HomePage() {
         
         @keyframes scroll {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-100%); }
+          100% { transform: translateX(-50%); }
         }
-        
-        .carousel-container:hover .carousel-track { animation-play-state: paused; }
-        .carousel-track { animation: scroll 30s linear infinite; display: flex; }
       `}</style>
 
       <div className="absolute inset-0 bg-gradient-to-r from-[#8B6914]/10 via-transparent to-[#8B6914]/10 pointer-events-none" />
@@ -167,36 +145,56 @@ export default function HomePage() {
       </main>
 
       {/* Seção Nossos Clientes */}
-      <section className="relative z-10 py-16 overflow-hidden">
-        <div className="text-center mb-12 px-6">
+      <section className="relative z-10 py-16">
+        <div className="text-center mb-10 px-6">
           <h2 className="text-4xl font-bold mb-4 text-white">Nossos Clientes</h2>
-          <p className="text-gray-300 text-lg">
+          <p className="text-gray-300 text-base max-w-3xl mx-auto mb-8">
             Explore as melhores comunidades do Discord e conecte-se com milhares de pessoas que compartilham seus interesses.
           </p>
         </div>
 
-        <div className="carousel-container relative w-full">
-          <div className="carousel-track">
-            {/* Primeira cópia */}
-            <div className="flex space-x-6 pr-6">
-              {servers.map((server) => (
-                <ServerCard key={`first-${server.id}`} server={server} />
-              ))}
-            </div>
-            {/* Segunda cópia para loop */}
-            <div className="flex space-x-6 pr-6">
-              {servers.map((server) => (
-                <ServerCard key={`second-${server.id}`} server={server} />
-              ))}
-            </div>
+        {/* Carrossel com animação */}
+        <div className="w-full overflow-hidden">
+          <div 
+            className="flex gap-4 w-max"
+            style={{
+              animation: 'scroll 30s linear infinite',
+            }}
+          >
+            {/* Duplicar 2x para loop infinito */}
+            {[...servers, ...servers].map((server, index) => (
+              <div 
+                key={index}
+                className="flex-shrink-0 w-64 bg-gradient-to-br from-gray-900/90 to-gray-800/70 backdrop-blur-sm border border-gray-700 rounded-lg p-4 hover:border-[#8B6914] hover:shadow-[0_0_20px_rgba(139,105,20,0.25)] transition-all duration-300 hover:scale-105 cursor-pointer"
+              >
+                <div className="flex items-center space-x-3">
+                  <div className={`w-16 h-16 bg-gradient-to-br ${server.iconBg} rounded-xl flex items-center justify-center text-2xl shadow-md flex-shrink-0`}>
+                    {server.icon}
+                  </div>
+                  <div className="flex-1 text-left min-w-0">
+                    <h3 className="text-white font-semibold text-base mb-1 truncate">{server.name}</h3>
+                    <div className="flex flex-col space-y-0.5 text-xs">
+                      <span className="flex items-center text-gray-400">
+                        <span className="w-1.5 h-1.5 bg-gray-500 rounded-full mr-1.5"></span>
+                        {server.members} membros
+                      </span>
+                      <span className="flex items-center text-green-400">
+                        <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5 animate-pulse"></span>
+                        {server.online} online
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="flex items-center justify-between px-6 py-4 lg:px-12 border-t border-gray-700 relative z-10">
+      <footer className="flex items-center justify-between px-6 py-4 lg:px-12 border-t border-gray-700 relative z-10 mt-16">
         <div className="flex items-center space-x-6">
-          <Link href="#" className="transition-colors text-xs" style={{ color: "#8B6914" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#6B4E0A")} onMouseLeave={(e) => (e.currentTarget.style.color = "#8B6914")}>
+          <Link href="#" className="transition-colors text-xs" style={{ color: "#8B6914" }} onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#6B4E0A")} onMouseLeave={(e) => (e.currentTarget.style.color = "#8B6914")}>
             Termos de Serviço
           </Link>
           <Link href="#" className="transition-colors text-xs" style={{ color: "#8B6914" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#6B4E0A")} onMouseLeave={(e) => (e.currentTarget.style.color = "#8B6914")}>
