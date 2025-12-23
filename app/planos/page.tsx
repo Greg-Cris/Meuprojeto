@@ -233,7 +233,7 @@ export default function PlansPage() {
       </main>
 
       {/* Footer FIXO */}
-      <footer className="fixed bottom-0 left-0 right-0 flex flex-col sm:flex-row items-center justify-between px-6 py-6 lg:px-12 border-t border-gray-800 z-50 bg-black/90 backdrop-blur-md gap-4">
+      <footer className="flex flex-col sm:flex-row items-center justify-between px-6 py-6 lg:px-12 border-t border-gray-800 relative z-10 bg-black/90 backdrop-blur-md gap-4">
         <div className="flex items-center space-x-6">
           <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2">
             <span>📋</span> Termos de Serviço
