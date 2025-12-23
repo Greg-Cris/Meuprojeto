@@ -23,20 +23,38 @@ export default function HomePage() {
   }, [])
 
   const ServerCard = ({ server }) => (
-    <div className="flex-shrink-0 w-96 bg-[#2b2d31] border border-gray-700/50 rounded-xl p-4 hover:bg-[#35373c] transition-all duration-200 cursor-pointer">
-      <div className="flex items-center space-x-3">
-        <div className={`w-16 h-16 bg-gradient-to-br ${server.iconBg} rounded-2xl flex items-center justify-center text-3xl shadow-lg flex-shrink-0`}>
+    <div className="relative flex-shrink-0 w-80 bg-[#2b2d31] border border-gray-700/50 rounded-xl p-3 hover:bg-[#35373c] transition-all duration-200 cursor-pointer overflow-hidden">
+      {/* Fundo animado com símbolos */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none overflow-hidden">
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute text-4xl"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animation: `float-symbol ${Math.random() * 8 + 6}s infinite ease-in-out`,
+              animationDelay: `${Math.random() * 3}s`,
+            }}
+          >
+            {['🎵', '🎶', '♪', '♫', '🎧', '🎤'][Math.floor(Math.random() * 6)]}
+          </div>
+        ))}
+      </div>
+      
+      <div className="relative z-10 flex items-center space-x-3">
+        <div className={`w-14 h-14 bg-gradient-to-br ${server.iconBg} rounded-xl flex items-center justify-center text-2xl shadow-lg flex-shrink-0`}>
           {server.icon}
         </div>
         <div className="flex-1 text-left min-w-0">
-          <h3 className="text-white font-semibold text-base mb-1 truncate">{server.name}</h3>
+          <h3 className="text-white font-semibold text-sm mb-0.5 truncate">{server.name}</h3>
           <div className="flex items-center space-x-3 text-xs">
             <span className="flex items-center text-gray-400">
-              <span className="w-2 h-2 bg-gray-500 rounded-full mr-1.5"></span>
+              <span className="w-1.5 h-1.5 bg-gray-500 rounded-full mr-1.5"></span>
               {server.members} membros
             </span>
             <span className="flex items-center text-green-400">
-              <span className="w-2 h-2 bg-green-500 rounded-full mr-1.5 animate-pulse"></span>
+              <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5 animate-pulse"></span>
               {server.online} online
             </span>
           </div>
@@ -102,6 +120,13 @@ export default function HomePage() {
           0%, 85% { opacity: 1; }
           90%, 95% { opacity: 0.3; }
           100% { opacity: 1; }
+        }
+        
+        @keyframes float-symbol {
+          0%, 100% { transform: translate(0, 0) rotate(0deg); }
+          25% { transform: translate(10px, -10px) rotate(5deg); }
+          50% { transform: translate(-5px, -20px) rotate(-5deg); }
+          75% { transform: translate(-10px, -10px) rotate(3deg); }
         }
         
         @keyframes scroll {
@@ -177,17 +202,17 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-5xl mx-auto px-8">
           <div className="carousel-container relative w-full overflow-hidden">
             <div className="carousel-track">
               {/* Primeira cópia */}
-              <div className="flex space-x-4 pr-4">
+              <div className="flex space-x-3 pr-3">
                 {servers.map((server) => (
                   <ServerCard key={`first-${server.id}`} server={server} />
                 ))}
               </div>
               {/* Segunda cópia para loop */}
-              <div className="flex space-x-4 pr-4">
+              <div className="flex space-x-3 pr-3">
                 {servers.map((server) => (
                   <ServerCard key={`second-${server.id}`} server={server} />
                 ))}
