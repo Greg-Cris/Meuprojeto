@@ -105,15 +105,16 @@ export default function HomePage() {
         }
         
         @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(calc(-268px * 6)); }
+          from { transform: translateX(0); }
+          to { transform: translateX(-33.333%); }
         }
         
-        .carousel-container:hover .carousel-track { animation-play-state: paused; }
-        .carousel-track { 
-          animation: scroll 40s linear infinite; 
-          display: flex;
-          width: fit-content;
+        .animate-scroll {
+          animation: scroll 40s linear infinite;
+        }
+        
+        .animate-scroll:hover {
+          animation-play-state: paused;
         }
       `}</style>
 
@@ -173,7 +174,7 @@ export default function HomePage() {
       </main>
 
       {/* Seção Nossos Clientes */}
-      <section className="relative z-10 py-16 overflow-hidden">
+      <section className="relative z-10 py-16">
         <div className="text-center mb-10 px-6">
           <h2 className="text-4xl font-bold mb-4 text-white">Nossos Clientes</h2>
           <p className="text-gray-300 text-base max-w-3xl mx-auto">
@@ -181,24 +182,16 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="carousel-container relative w-full overflow-hidden">
-          <div className="carousel-track flex">
-            {/* Primeira cópia */}
-            {servers.map((server) => (
-              <div key={`first-${server.id}`} className="px-2">
-                <ServerCard server={server} />
-              </div>
-            ))}
-            {/* Segunda cópia para loop infinito */}
-            {servers.map((server) => (
-              <div key={`second-${server.id}`} className="px-2">
-                <ServerCard server={server} />
-              </div>
-            ))}
-            {/* Terceira cópia para garantir loop suave */}
-            {servers.map((server) => (
-              <div key={`third-${server.id}`} className="px-2">
-                <ServerCard server={server} />
+        <div className="relative w-full overflow-hidden">
+          <div className="flex animate-scroll">
+            {/* Duplicar os cards 3x para loop infinito */}
+            {[...Array(3)].map((_, setIndex) => (
+              <div key={setIndex} className="flex flex-shrink-0">
+                {servers.map((server) => (
+                  <div key={`${setIndex}-${server.id}`} className="px-2">
+                    <ServerCard server={server} />
+                  </div>
+                ))}
               </div>
             ))}
           </div>
