@@ -8,9 +8,9 @@ export default function HomePage() {
   const [isScrolled, setIsScrolled] = useState(false)
   
   const servers = [
-    { id: 1, name: "Atentah Studio", icon: "🎨", iconBg: "from-[#8B6914] to-[#6B4E0A]", members: "205", online: "20" },
-    { id: 2, name: "💎 AeroTools Premium 💎", icon: "💎", iconBg: "from-cyan-600 to-blue-700", members: "203", online: "20" },
-    { id: 3, name: "BLACKOUT SHOP", icon: "🛍️", iconBg: "from-gray-700 to-black", members: "187", online: "18" },
+    { id: 1, name: "Injection - Roblox", icon: "🎮", iconBg: "from-gray-700 to-black", members: "61.6K", online: "6.2K" },
+    { id: 2, name: "SatzX Unstoppable #10k", icon: "💎", iconBg: "from-cyan-600 to-blue-700", members: "9.3K", online: "932" },
+    { id: 3, name: "Brasil São Paulo Roleplay - MTA", icon: "🇧🇷", iconBg: "from-red-700 to-red-900", members: "7.9K", online: "786" },
     { id: 4, name: "Legends Store | #8K", icon: "🏪", iconBg: "from-red-700 to-red-900", members: "7.6K", online: "764" },
     { id: 5, name: "VitinStore", icon: "🎮", iconBg: "from-purple-700 to-indigo-800", members: "7.3K", online: "725" },
     { id: 6, name: "Suivex Community #5100", icon: "🦋", iconBg: "from-pink-600 to-purple-700", members: "5.0K", online: "502" },
@@ -22,26 +22,48 @@ export default function HomePage() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const ServerCard = ({ server }) => (
-    <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-5 hover:border-[#8B6914] hover:shadow-[0_0_30px_rgba(139,105,20,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer">
-      <div className="flex items-center space-x-4">
-        <div className={`w-20 h-20 bg-gradient-to-br ${server.iconBg} rounded-2xl flex items-center justify-center text-3xl shadow-lg`}>
+  const ServerCard: React.FC<{ server: any }> = ({ server }) => (
+    <div
+      className="w-96 h-28 flex-shrink-0 relative rounded-2xl overflow-hidden border border-gray-700 bg-gradient-to-r from-gray-900/60 to-black/40 backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.6)] hover:scale-[1.02] transition-transform"
+      role="group"
+    >
+      {/* Subtle background pattern (uses gradient + overlay) */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(255,255,255,0.02),transparent)]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
+
+      <div className="relative z-10 flex items-center h-full px-4">
+        <div className={`w-16 h-16 rounded-xl flex items-center justify-center text-2xl font-bold text-white shadow-lg ${server.iconBg}`}>
           {server.icon}
         </div>
-        <div className="flex-1 text-left">
-          <h3 className="text-white font-bold text-xl mb-2">{server.name}</h3>
-          <div className="flex items-center space-x-4 text-sm">
-            <span className="flex items-center text-gray-400">
-              <span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>
+
+        <div className="flex-1 pl-4">
+          <div className="flex items-center justify-between">
+            <h3 className="text-white font-semibold text-lg truncate" title={server.name}>{server.name}</h3>
+            {/* Discord icon placeholder */}
+            <div className="flex items-center space-x-2">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="text-gray-300" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.5 9.5C8.328 9.5 9 8.828 9 8C9 7.172 8.328 6.5 7.5 6.5C6.672 6.5 6 7.172 6 8C6 8.828 6.672 9.5 7.5 9.5Z" fill="#E6E6E6"/>
+                <path d="M16.5 9.5C17.328 9.5 18 8.828 18 8C18 7.172 17.328 6.5 16.5 6.5C15.672 6.5 15 7.172 15 8C15 8.828 15.672 9.5 16.5 9.5Z" fill="#E6E6E6"/>
+                <path d="M4 3C4 3 6 4 8 4.5C10 5 12 5 12 5C12 5 14 5 16 4.5C18 4 20 3 20 3C20 3 19 6 18.5 9.5C18.5 9.5 17 9.1 15.5 8.5C15.5 8.5 14.8 10.2 13 10.9C13 10.9 12.5 10.1 11 10.1C9.5 10.1 9 10.9 9 10.9C7.2 10.2 6.5 8.5 6.5 8.5C5 9.1 3.5 9.5 3.5 9.5C3 6 4 3 4 3Z" fill="#C6C6C6"/>
+              </svg>
+            </div>
+          </div>
+
+          <div className="mt-2 flex items-center gap-4 text-xs text-gray-300">
+            <span className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-gray-500 rounded-full inline-block" />
               {server.members} membros
             </span>
-            <span className="flex items-center text-green-400">
-              <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+            <span className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-green-500 rounded-full inline-block animate-pulse" />
               {server.online} online
             </span>
           </div>
         </div>
       </div>
+
+      {/* subtle hover shine */}
+      <div className="pointer-events-none absolute -left-20 top-0 h-full w-1/2 bg-gradient-to-r from-white/12 via-white/6 to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
     </div>
   )
 
@@ -65,15 +87,14 @@ export default function HomePage() {
           />
         ))}
         
-        {/* Orbs maiores flutuantes */}
         {[...Array(5)].map((_, i) => (
           <div
             key={`orb-${i}`}
             className="absolute rounded-full blur-sm"
             style={{
               backgroundColor: `rgba(139, 105, 20, ${Math.random() * 0.15 + 0.05})`,
-              width: `${Math.random() * 4 + 3}px`,
-              height: `${Math.random() * 4 + 3}px`,
+              width: `${Math.random() * 120 + 80}px`,
+              height: `${Math.random() * 120 + 80}px`,
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
               animation: `float-diagonal ${Math.random() * 20 + 20}s infinite ease-in-out`,
@@ -106,26 +127,38 @@ export default function HomePage() {
         
         @keyframes scroll {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-100%); }
+          100% { transform: translateX(-50%); }
         }
-        
-        .carousel-container:hover .carousel-track { animation-play-state: paused; }
-        .carousel-track { animation: scroll 30s linear infinite; display: flex; }
+
+        /* Carousel styles */
+        .carousel-viewport { max-width: 1200px; margin: 0 auto; }
+        .carousel-track {
+          display: flex;
+          gap: 24px;
+          align-items: center;
+          padding: 12px 0;
+          will-change: transform;
+          animation: scroll 40s linear infinite;
+        }
+        .carousel-viewport:hover .carousel-track { animation-play-state: paused; }
+
+        /* hide native scrollbar if overflow appears */
+        .carousel-viewport::-webkit-scrollbar { display: none; }
       `}</style>
 
       <div className="absolute inset-0 bg-gradient-to-r from-[#8B6914]/10 via-transparent to-[#8B6914]/10 pointer-events-none" />
 
       {/* Header */}
-      <header className={`fixed top-0 left-0 right-0 flex items-center justify-between px-6 py-2 lg:px-12 z-50 transition-all duration-300 bg-transparent ${isScrolled ? "shadow-[0_4px_20px_rgba(0,0,0,0.3)]" : ""}`}>
+      <header className={`fixed top-0 left-0 right-0 flex items-center justify-between px-6 py-2 lg:px-12 z-50 transition-all duration-300 bg-transparent ${isScrolled ? "shadow-[0_4px_20px_rgba(0,0,0,0.6)] backdrop-blur-sm" : ""}`}>
         <div className="flex items-center">
-          <img src="/gwhite-logo.png" alt="G-White Apps" className="h-16 w-auto" />
+          <img src="/gwhite-logo.png" alt="G-White Apps" className="h-12 w-auto" />
         </div>
         <nav className="hidden md:flex items-center space-x-8">
           <Link href="#" className="text-gray-200 hover:text-white transition-colors">Início</Link>
           <Link href="#" className="text-gray-200 hover:text-white transition-colors">Planos</Link>
           <Link href="#" className="text-gray-200 hover:text-white transition-colors">Tutoriais</Link>
           <Link href="#" className="text-gray-200 hover:text-white transition-colors">Discord</Link>
-          <Button className="bg-blue-800 hover:bg-blue-900 text-white px-6 py-2 rounded-lg transition-colors">
+          <Button className="bg-blue-800 hover:bg-blue-900 text-white px-4 py-2 rounded-lg transition-colors">
             Login com Discord
           </Button>
         </nav>
@@ -172,21 +205,22 @@ export default function HomePage() {
       <section className="relative z-10 py-16 overflow-hidden">
         <div className="text-center mb-12 px-6">
           <h2 className="text-4xl font-bold mb-4 text-white">Nossos Clientes</h2>
-          <p className="text-gray-300 text-lg">
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             Explore as melhores comunidades do Discord e conecte-se com milhares de pessoas que compartilham seus interesses.
           </p>
         </div>
 
-        <div className="carousel-container relative w-full">
+        <div className="carousel-viewport relative w-full px-6">
           <div className="carousel-track">
-            {/* Primeira cópia */}
-            <div className="flex space-x-6 pr-6">
+            {/* primeira cópia */}
+            <div className="flex items-center gap-6">
               {servers.map((server) => (
                 <ServerCard key={`first-${server.id}`} server={server} />
               ))}
             </div>
-            {/* Segunda cópia para loop */}
-            <div className="flex space-x-6 pr-6">
+
+            {/* segunda cópia (loop) */}
+            <div className="flex items-center gap-6">
               {servers.map((server) => (
                 <ServerCard key={`second-${server.id}`} server={server} />
               ))}
@@ -198,13 +232,13 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="flex items-center justify-between px-6 py-4 lg:px-12 border-t border-gray-700 relative z-10">
         <div className="flex items-center space-x-6">
-          <Link href="#" className="transition-colors text-xs" style={{ color: "#8B6914" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#6B4E0A")} onMouseLeave={(e) => (e.currentTarget.style.color = "#8B6914")}>
+          <Link href="#" className="transition-colors text-xs" style={{ color: "#8B6914" }}>
             Termos de Serviço
           </Link>
-          <Link href="#" className="transition-colors text-xs" style={{ color: "#8B6914" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#6B4E0A")} onMouseLeave={(e) => (e.currentTarget.style.color = "#8B6914")}>
+          <Link href="#" className="transition-colors text-xs" style={{ color: "#8B6914" }}>
             Discord
           </Link>
-          <Link href="#" className="transition-colors text-xs" style={{ color: "#8B6914" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#6B4E0A")} onMouseLeave={(e) => (e.currentTarget.style.color = "#8B6914")}>
+          <Link href="#" className="transition-colors text-xs" style={{ color: "#8B6914" }}>
             Youtube
           </Link>
         </div>
