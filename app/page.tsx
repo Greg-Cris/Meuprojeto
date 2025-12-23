@@ -47,7 +47,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-[#8B6914] text-white relative overflow-hidden">
-      {/* Partículas animadas */}
+      {/* Partículas pequenas */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(30)].map((_, i) => (
           <div
@@ -64,6 +64,23 @@ export default function HomePage() {
             }}
           />
         ))}
+        
+        {/* Orbs maiores flutuantes */}
+        {[...Array(5)].map((_, i) => (
+          <div
+            key={`orb-${i}`}
+            className="absolute rounded-full blur-sm"
+            style={{
+              backgroundColor: `rgba(139, 105, 20, ${Math.random() * 0.15 + 0.05})`,
+              width: `${Math.random() * 4 + 3}px`,
+              height: `${Math.random() * 4 + 3}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animation: `float-diagonal ${Math.random() * 20 + 20}s infinite ease-in-out`,
+              animationDelay: `${Math.random() * 10}s`,
+            }}
+          />
+        ))}
       </div>
 
       <style jsx>{`
@@ -73,13 +90,30 @@ export default function HomePage() {
           90% { opacity: 1; }
           100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
         }
+        
+        @keyframes float-diagonal {
+          0%, 100% { transform: translate(0, 0); }
+          25% { transform: translate(30px, -30px); }
+          50% { transform: translate(60px, 0); }
+          75% { transform: translate(30px, 30px); }
+        }
+        
+        @keyframes natural-blink {
+          0%, 85% { opacity: 1; }
+          90%, 95% { opacity: 0.3; }
+          100% { opacity: 1; }
+        }
+        
         @keyframes scroll {
           0% { transform: translateX(0); }
           100% { transform: translateX(-100%); }
         }
+        
         .carousel-container:hover .carousel-track { animation-play-state: paused; }
         .carousel-track { animation: scroll 30s linear infinite; display: flex; }
       `}</style>
+
+      <div className="absolute inset-0 bg-gradient-to-r from-[#8B6914]/10 via-transparent to-[#8B6914]/10 pointer-events-none" />
 
       {/* Header */}
       <header className={`fixed top-0 left-0 right-0 flex items-center justify-between px-6 py-2 lg:px-12 z-50 transition-all duration-300 bg-transparent ${isScrolled ? "shadow-[0_4px_20px_rgba(0,0,0,0.3)]" : ""}`}>
@@ -101,7 +135,14 @@ export default function HomePage() {
       <main className="flex flex-col items-center justify-center px-6 py-20 pt-32 text-center min-h-screen relative z-10">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-white font-bold tracking-wide">G-White Apps</span>
+            <div className="relative inline-block">
+              <div className="absolute -top-12 left-0 transform -translate-x-2 -rotate-12 scale-x-[-1]">
+                <span className="text-2xl" style={{ animation: "natural-blink 4s infinite ease-in-out" }}>
+                  👑
+                </span>
+              </div>
+              <span className="text-white font-bold tracking-wide">G-White Apps</span>
+            </div>
           </h1>
           <h2 className="text-3xl lg:text-4xl font-bold mb-8" style={{ color: "#8B6914" }}>
             Seu futuro Bot está aqui.
