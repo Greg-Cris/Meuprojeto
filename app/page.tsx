@@ -65,55 +65,75 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-950 to-black text-white relative overflow-hidden">
-      {/* Partículas otimizadas */}
+      {/* Partículas INTENSAS */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Partículas brancas pequenas */}
-        {[...Array(60)].map((_, i) => (
+        {/* Partículas brancas pequenas - MUITAS */}
+        {[...Array(80)].map((_, i) => (
           <div
             key={i}
             className="absolute rounded-full will-change-transform"
             style={{
-              backgroundColor: `rgba(255, 255, 255, ${Math.random() * 0.6 + 0.2})`,
-              width: `${Math.random() * 4 + 2}px`,
-              height: `${Math.random() * 4 + 2}px`,
+              backgroundColor: `rgba(255, 255, 255, ${Math.random() * 0.8 + 0.3})`,
+              width: `${Math.random() * 5 + 2}px`,
+              height: `${Math.random() * 5 + 2}px`,
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
-              animation: `float-up ${Math.random() * 15 + 10}s infinite linear`,
-              animationDelay: `${Math.random() * 10}s`,
+              animation: `float-up ${Math.random() * 12 + 8}s infinite linear`,
+              animationDelay: `${Math.random() * 8}s`,
+              filter: `blur(${Math.random() * 0.5}px)`,
             }}
           />
         ))}
         
-        {/* Orbs grandes e brilhantes */}
-        {[...Array(12)].map((_, i) => (
+        {/* Orbs GRANDES e BRILHANTES */}
+        {[...Array(20)].map((_, i) => (
           <div
             key={`orb-${i}`}
-            className="absolute rounded-full blur-md will-change-transform"
+            className="absolute rounded-full blur-lg will-change-transform"
             style={{
-              backgroundColor: `rgba(255, 255, 255, ${Math.random() * 0.3 + 0.1})`,
-              width: `${Math.random() * 12 + 8}px`,
-              height: `${Math.random() * 12 + 8}px`,
+              backgroundColor: `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.2})`,
+              width: `${Math.random() * 20 + 12}px`,
+              height: `${Math.random() * 20 + 12}px`,
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
-              animation: `float-diagonal ${Math.random() * 20 + 20}s infinite ease-in-out`,
-              animationDelay: `${Math.random() * 8}s`,
+              animation: `float-diagonal ${Math.random() * 18 + 15}s infinite ease-in-out`,
+              animationDelay: `${Math.random() * 6}s`,
             }}
           />
         ))}
 
         {/* Partículas cinzas médias */}
-        {[...Array(30)].map((_, i) => (
+        {[...Array(40)].map((_, i) => (
           <div
             key={`gray-${i}`}
             className="absolute rounded-full will-change-transform"
             style={{
-              backgroundColor: `rgba(180, 180, 180, ${Math.random() * 0.4 + 0.1})`,
-              width: `${Math.random() * 5 + 2}px`,
-              height: `${Math.random() * 5 + 2}px`,
+              backgroundColor: `rgba(200, 200, 200, ${Math.random() * 0.6 + 0.2})`,
+              width: `${Math.random() * 6 + 2}px`,
+              height: `${Math.random() * 6 + 2}px`,
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
-              animation: `float-up ${Math.random() * 20 + 15}s infinite linear`,
-              animationDelay: `${Math.random() * 12}s`,
+              animation: `float-up ${Math.random() * 16 + 12}s infinite linear`,
+              animationDelay: `${Math.random() * 10}s`,
+              filter: `blur(${Math.random() * 0.8}px)`,
+            }}
+          />
+        ))}
+        
+        {/* Partículas douradas */}
+        {[...Array(15)].map((_, i) => (
+          <div
+            key={`gold-${i}`}
+            className="absolute rounded-full will-change-transform"
+            style={{
+              backgroundColor: `rgba(217, 164, 65, ${Math.random() * 0.4 + 0.2})`,
+              width: `${Math.random() * 4 + 2}px`,
+              height: `${Math.random() * 4 + 2}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animation: `float-diagonal ${Math.random() * 20 + 15}s infinite ease-in-out`,
+              animationDelay: `${Math.random() * 8}s`,
+              filter: `blur(${Math.random() * 1}px)`,
             }}
           />
         ))}
