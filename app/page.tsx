@@ -182,17 +182,10 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="relative w-full overflow-hidden">
-          <div className="flex animate-scroll">
-            {/* Duplicar os cards 3x para loop infinito */}
-            {[...Array(3)].map((_, setIndex) => (
-              <div key={setIndex} className="flex flex-shrink-0">
-                {servers.map((server) => (
-                  <div key={`${setIndex}-${server.id}`} className="px-2">
-                    <ServerCard server={server} />
-                  </div>
-                ))}
-              </div>
+        <div className="overflow-hidden py-4">
+          <div className="flex gap-4 animate-scroll">
+            {[...servers, ...servers, ...servers].map((server, index) => (
+              <ServerCard key={index} server={server} />
             ))}
           </div>
         </div>
