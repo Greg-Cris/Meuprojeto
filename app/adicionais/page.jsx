@@ -198,9 +198,9 @@ export default function AddonsPage() {
           <a href="/adicionais" className="text-white bg-white/10 transition-all duration-200 px-4 py-2 rounded-lg">
             Adicionais
           </a>
-          <a href="#" className="text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-200 px-4 py-2 rounded-lg">
-            Discord
-          </a>
+          <Link href="/tutoriais" className="text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-200 px-4 py-2 rounded-lg">
+            Tutoriais
+          </Link>
           <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-all duration-200 ml-4 shadow-lg font-semibold">
             Entrar
           </Button>
